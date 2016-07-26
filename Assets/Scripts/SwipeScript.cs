@@ -7,15 +7,39 @@ public class SwipeScript : MonoBehaviour {
     Rigidbody rb;
     private float fingerStartTime = 0.0f;
     private Vector2 fingerStartPos = Vector2.zero;
-
     private bool isSwipe = false;
     private float minSwipeDist = 50.0f;
     private float maxSwipeTime = 0.5f;
+    float ButtonCooler = 0.5f ; // Half a second before reset
+    float ButtonCount = 0;
 
 
     // Update is called once per frame
     void Update()
     {
+
+        //Tap Screen to move forward
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (ButtonCooler > 0 && ButtonCount == 1/*Number of Taps you want Minus One*/)
+            {
+                //DOUBLE TAP TO JUMP
+                rb.velocity = new Vector3(0, speed, speed);
+            }
+            else
+            {
+                rb.velocity = new Vector3(0, 0, speed);
+                ButtonCooler = 0.5f;
+                ButtonCount += 1;
+            }
+
+            
+        }
+
+        if (ButtonCooler > 0)
+            ButtonCooler -= 1 * Time.deltaTime;
+        else
+            ButtonCount = 0;
 
         if (Input.touchCount > 0)
         {
@@ -62,8 +86,10 @@ public class SwipeScript : MonoBehaviour {
                             {
                                 if (swipeType.x > 0.0f)
                                 {
-                                    // MOVE RIGHT
+                                 
                                     rb.velocity = new Vector3(speed, 0, 0);
+                
+                                        
                                 }
                                 else
                                 {
@@ -71,8 +97,7 @@ public class SwipeScript : MonoBehaviour {
                                     rb.velocity = new Vector3(-speed, 0, 0);
                                 }
                             }
-                                
-                            
+
                             if (swipeType.y != 0.0f)
                             {
                                 if (swipeType.y > 0.0f)
@@ -87,7 +112,6 @@ public class SwipeScript : MonoBehaviour {
                             }
 
                         }
-
                         break;
                 }
             }

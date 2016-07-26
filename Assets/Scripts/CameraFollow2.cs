@@ -11,6 +11,9 @@ public class CameraFollow2 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.position = new Vector3(transform.position.x, 3, ball.transform.position.z - 2);
+        transform.position = new Vector3(transform.position.x, 3, ball.transform.position.z +2);
+
+        // Always look at the target
+        transform.LookAt(ball.transform);
     }
 }

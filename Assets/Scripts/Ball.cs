@@ -2,19 +2,15 @@
 using System.Collections;
 
 public class Ball : MonoBehaviour {
-    enum BALL_STATE
-    {
-        FORWARD,
-        SIDE
-    }
     
     public GameObject _platform;
+    public GameObject _highPlatform;
+    public GameObject _pickUp;
     GameObject _lastPlatform;
     Rigidbody rb;
 
     bool isStarted = false;
     float speed = 3;
-    BALL_STATE ballState = BALL_STATE.FORWARD;
 
     void OnTap()
     {
@@ -24,22 +20,13 @@ public class Ball : MonoBehaviour {
             return;
         }
         if (Input.GetKeyDown("a"))
-        {
-            ballState = BALL_STATE.SIDE;
             rb.velocity = new Vector3(-speed, 0, 0);
-        }
             
         if (Input.GetKeyDown("d"))
-        {
-            ballState = BALL_STATE.SIDE;
             rb.velocity = new Vector3(speed, 0, 0);
-        }
 
         if (Input.GetKeyUp("a") || Input.GetKeyUp("d"))
-        {
-            ballState = BALL_STATE.SIDE;
             rb.velocity = new Vector3(0, 0, speed);
-        }
     }
     
     // Use this for initialization
@@ -82,32 +69,65 @@ public class Ball : MonoBehaviour {
     {
         // Generating random number between 0 and 1. That will decide that the new platform should create either on left or right
         int randonNumber = Random.Range(0, 3);
-        // If randomNumber got 0
+        int randonNumber2 = Random.Range(0, 1);
 
         switch (randonNumber)
         {
             case 0:
-                // Creating a new platform, setting position w.r.t. last platform and after that assigning it as lastPlatform
-                _lastPlatform = Instantiate(_platform, new Vector3(_lastPlatform.transform.position.x,
-                _lastPlatform.transform.position.y,
-                _lastPlatform.transform.position.z + 1),
-                Quaternion.identity) as GameObject;
+                {
+                    // Creating a new platform, setting position w.r.t. last platform and after that assigning it as lastPlatform
+                    if (randonNumber2 == 0)
+                        _lastPlatform = Instantiate(_platform, new Vector3(_lastPlatform.transform.position.x,
+                        _lastPlatform.transform.position.y,
+                        _lastPlatform.transform.position.z + 1),
+                        Quaternion.identity) as GameObject;
+                    else
+                        _lastPlatform = Instantiate(_highPlatform, new Vector3(_lastPlatform.transform.position.x,
+                        _lastPlatform.transform.position.y,
+                        _lastPlatform.transform.position.z + 1),
+                        Quaternion.identity) as GameObject;
+                    
+                }
+                
                 break;
             case 1:
-                // Creating a new platform, setting position w.r.t. last platform and after that assigning it as lastPlatform
-                _lastPlatform = Instantiate(_platform, new Vector3(_lastPlatform.transform.position.x - 1,
-                _lastPlatform.transform.position.y,
-                _lastPlatform.transform.position.z),
-                Quaternion.identity) as GameObject;
+                {
+                    // Creating a new platform, setting position w.r.t. last platform and after that assigning it as lastPlatform
+                    if (randonNumber2 == 0)
+                        _lastPlatform = Instantiate(_platform, new Vector3(_lastPlatform.transform.position.x - 1,
+                        _lastPlatform.transform.position.y,
+                        _lastPlatform.transform.position.z),
+                        Quaternion.identity) as GameObject;
+                    else
+                        _lastPlatform = Instantiate(_highPlatform, new Vector3(_lastPlatform.transform.position.x - 1,
+                        _lastPlatform.transform.position.y,
+                        _lastPlatform.transform.position.z),
+                        Quaternion.identity) as GameObject;
+                }
                 break;
             case 2:
-                // Creating a new platform, setting position w.r.t. last platform and after that assigning it as lastPlatform
-                _lastPlatform = Instantiate(_platform, new Vector3(_lastPlatform.transform.position.x + 1,
-                _lastPlatform.transform.position.y,
-                _lastPlatform.transform.position.z),
-                Quaternion.identity) as GameObject;
+                {
+                    if (randonNumber2 == 0)
+                        // Creating a new platform, setting position w.r.t. last platform and after that assigning it as lastPlatform
+                        _lastPlatform = Instantiate(_platform, new Vector3(_lastPlatform.transform.position.x + 1,
+                        _lastPlatform.transform.position.y,
+                        _lastPlatform.transform.position.z),
+                        Quaternion.identity) as GameObject;
+                    else
+                        // Creating a new platform, setting position w.r.t. last platform and after that assigning it as lastPlatform
+                        _lastPlatform = Instantiate(_highPlatform, new Vector3(_lastPlatform.transform.position.x + 1,
+                        _lastPlatform.transform.position.y,
+                        _lastPlatform.transform.position.z),
+                        Quaternion.identity) as GameObject;
+                }
+                
                 break;
         }
+
+        SpawnPickUps spu = new SpawnPickUps();
+        randonNumber = Random.Range(0, 2);
+        //if(randonNumber == 1)
+        //    _pickUp = spu.SpawnPlatform(_pickUp, _lastPlatform.transform.position.x, _lastPlatform.transform.position.y, _lastPlatform.transform.position.z);
     }
 
     void OnCollisionExit(Collision other)
