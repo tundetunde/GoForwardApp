@@ -6,6 +6,7 @@ public class Ball : MonoBehaviour {
     public GameObject _platform;
     public GameObject _highPlatform;
     public GameObject _pickUp;
+    public GameObject _trapPlatform;
     GameObject _lastPlatform;
     Rigidbody rb;
 
@@ -39,7 +40,7 @@ public class Ball : MonoBehaviour {
             SpawnStartingPlatform();
         }
 
-        for (int index = 0; index < 50; index++)
+        for (int index = 0; index < 70; index++)
         {
             SpawnPlatform();
         }
@@ -69,20 +70,20 @@ public class Ball : MonoBehaviour {
     {
         // Generating random number between 0 and 1. That will decide that the new platform should create either on left or right
         int randonNumber = Random.Range(0, 3);
-        int randonNumber2 = Random.Range(0, 1);
+        int randonNumber2 = Random.Range(0, 5);
 
         switch (randonNumber)
         {
             case 0:
                 {
                     // Creating a new platform, setting position w.r.t. last platform and after that assigning it as lastPlatform
-                    if (randonNumber2 == 0)
+                    if (randonNumber2 == 4)
                         _lastPlatform = Instantiate(_platform, new Vector3(_lastPlatform.transform.position.x,
                         _lastPlatform.transform.position.y,
                         _lastPlatform.transform.position.z + 1),
                         Quaternion.identity) as GameObject;
                     else
-                        _lastPlatform = Instantiate(_highPlatform, new Vector3(_lastPlatform.transform.position.x,
+                        _lastPlatform = Instantiate(_platform, new Vector3(_lastPlatform.transform.position.x,
                         _lastPlatform.transform.position.y,
                         _lastPlatform.transform.position.z + 1),
                         Quaternion.identity) as GameObject;
@@ -93,13 +94,13 @@ public class Ball : MonoBehaviour {
             case 1:
                 {
                     // Creating a new platform, setting position w.r.t. last platform and after that assigning it as lastPlatform
-                    if (randonNumber2 == 0)
+                    if (randonNumber2 == 4)
                         _lastPlatform = Instantiate(_platform, new Vector3(_lastPlatform.transform.position.x - 1,
                         _lastPlatform.transform.position.y,
                         _lastPlatform.transform.position.z),
                         Quaternion.identity) as GameObject;
                     else
-                        _lastPlatform = Instantiate(_highPlatform, new Vector3(_lastPlatform.transform.position.x - 1,
+                        _lastPlatform = Instantiate(_platform, new Vector3(_lastPlatform.transform.position.x - 1,
                         _lastPlatform.transform.position.y,
                         _lastPlatform.transform.position.z),
                         Quaternion.identity) as GameObject;
@@ -107,7 +108,7 @@ public class Ball : MonoBehaviour {
                 break;
             case 2:
                 {
-                    if (randonNumber2 == 0)
+                    if (randonNumber2 == 4)
                         // Creating a new platform, setting position w.r.t. last platform and after that assigning it as lastPlatform
                         _lastPlatform = Instantiate(_platform, new Vector3(_lastPlatform.transform.position.x + 1,
                         _lastPlatform.transform.position.y,
@@ -115,7 +116,7 @@ public class Ball : MonoBehaviour {
                         Quaternion.identity) as GameObject;
                     else
                         // Creating a new platform, setting position w.r.t. last platform and after that assigning it as lastPlatform
-                        _lastPlatform = Instantiate(_highPlatform, new Vector3(_lastPlatform.transform.position.x + 1,
+                        _lastPlatform = Instantiate(_platform, new Vector3(_lastPlatform.transform.position.x + 1,
                         _lastPlatform.transform.position.y,
                         _lastPlatform.transform.position.z),
                         Quaternion.identity) as GameObject;
@@ -124,23 +125,25 @@ public class Ball : MonoBehaviour {
                 break;
         }
 
-        SpawnPickUps spu = new SpawnPickUps();
-        randonNumber = Random.Range(0, 2);
-        //if(randonNumber == 1)
-        //    _pickUp = spu.SpawnPlatform(_pickUp, _lastPlatform.transform.position.x, _lastPlatform.transform.position.y, _lastPlatform.transform.position.z);
+        randonNumber = Random.Range(0, 5);
+        if(randonNumber == 4)
+            _pickUp = SpawnPickUps.SpawnPlatform(_pickUp, _lastPlatform.transform.position.x, _lastPlatform.transform.position.y, _lastPlatform.transform.position.z);
     }
 
     void OnCollisionExit(Collision other)
     {
-        // Because there is no other thing except platform to collide so I'm not checking that on which our Ball collided.
-        // Spawning new platform on leaving current platform
-        SpawnPlatform();
-        // Assigning platform's Gameobject to a variable "platform"
-        GameObject platform = other.gameObject;
-        // Turning off "isKinematic" attribute of platform, that will make platform falling down.
-        platform.GetComponent<Rigidbody>().isKinematic = false;
-        // After start falling, destroy that platform after 1 second.
-        InvokeDestroyPlatfrom(platform);
+        if (other.gameObject.CompareTag("Platform"))
+        {
+            // Because there is no other thing except platform to collide so I'm not checking that on which our Ball collided.
+            // Spawning new platform on leaving current platform
+            SpawnPlatform();
+            // Assigning platform's Gameobject to a variable "platform"
+            GameObject platform = other.gameObject;
+            // Turning off "isKinematic" attribute of platform, that will make platform falling down.
+            platform.GetComponent<Rigidbody>().isKinematic = false;
+            // After start falling, destroy that platform after 1 second.
+            InvokeDestroyPlatfrom(platform);
+        }
     }
 
     void InvokeDestroyPlatfrom(GameObject platform)
@@ -152,7 +155,7 @@ public class Ball : MonoBehaviour {
     IEnumerator DestroyPlatform(GameObject platform)
     {
         //Waiting for 1 second to execute next line(s) of code.
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
         // Destroying platform
         Destroy(platform);
     }

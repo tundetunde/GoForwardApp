@@ -19,6 +19,6 @@ public class ScoreEndGame : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         ScoreText.text = "Score: " + score;
-        HighScoreText.text = "HighScore: " + score;
+        HighScoreText.text = "HighScore: " + highScore;
     }
 }

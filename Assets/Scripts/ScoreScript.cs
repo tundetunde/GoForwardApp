@@ -16,7 +16,8 @@ public class ScoreScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if(ball.transform.position.y < 0)
-        SceneManager.LoadScene("GameOverScene");
+            SceneManager.LoadScene("GameOverScene");
+        score = PlayerPrefs.GetInt("Score");
         txt.text = "Score: " + (int)score;
         //PlayerPrefs.SetInt("Score", (int)score);
     }
