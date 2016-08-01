@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class Ball : MonoBehaviour {
-    
     public GameObject _platform;
     public GameObject _highPlatform;
     public GameObject _pickUp;
@@ -12,7 +11,6 @@ public class Ball : MonoBehaviour {
 
     bool isStarted = false;
     float speed = 3;
-
     void OnTap()
     {
         if (Input.GetMouseButtonDown(0))
@@ -29,9 +27,10 @@ public class Ball : MonoBehaviour {
         if (Input.GetKeyUp("a") || Input.GetKeyUp("d"))
             rb.velocity = new Vector3(0, 0, speed);
     }
-    
+
     // Use this for initialization
 	void Start () {
+        
         rb = GetComponent<Rigidbody>();
         _lastPlatform = Instantiate(_platform);
         _lastPlatform.transform.position = new Vector3(0, 0, 3);
