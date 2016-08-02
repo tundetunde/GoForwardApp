@@ -139,7 +139,7 @@ public class Ball : MonoBehaviour {
             // Assigning platform's Gameobject to a variable "platform"
             GameObject platform = other.gameObject;
             // Turning off "isKinematic" attribute of platform, that will make platform falling down.
-            platform.GetComponent<Rigidbody>().isKinematic = false;
+            
             // After start falling, destroy that platform after 1 second.
             InvokeDestroyPlatfrom(platform);
         }
@@ -153,8 +153,10 @@ public class Ball : MonoBehaviour {
 
     IEnumerator DestroyPlatform(GameObject platform)
     {
+        //yield return new WaitForSeconds(1.5f);
+        //platform.GetComponent<Rigidbody>().isKinematic = false;
         //Waiting for 1 second to execute next line(s) of code.
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(3.5f);
         // Destroying platform
         Destroy(platform);
     }
