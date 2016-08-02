@@ -24,7 +24,7 @@ public class SwipeScript : MonoBehaviour {
             if (ButtonCooler > 0 && ButtonCount == 1/*Number of Taps you want Minus One*/)
             {
                 //DOUBLE TAP TO JUMP
-                rb.velocity = new Vector3(0, speed, speed);
+                //rb.velocity = new Vector3(0, speed, speed);
             }
             else
             {
