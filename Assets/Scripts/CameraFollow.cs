@@ -25,7 +25,7 @@ public class CameraFollow : MonoBehaviour
         {
             // Calculate the current rotation angles
             wantedRotationAngle = target.eulerAngles.y;
-            wantedRotationAngle = 20;
+            wantedRotationAngle = 0;
             wantedHeight = target.position.y + height;
             currentRotationAngle = transform.eulerAngles.y;
             currentHeight = transform.position.y;

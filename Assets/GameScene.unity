@@ -191,7 +191,6 @@ GameObject:
   - 124: {fileID: 421875756}
   - 81: {fileID: 421875755}
   - 114: {fileID: 421875754}
-  - 114: {fileID: 421875760}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -246,7 +245,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.97794116, g: 0.98651963, b: 1, a: 0.019607844}
+  m_BackGroundColor: {r: 0.8897514, g: 0.6207288, b: 0.9485294, a: 0.019607844}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -284,18 +283,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &421875760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 421875753}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a3ab534c11fce44f876f6116f1f1dfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ball: {fileID: 1565165065}
 --- !u!1 &606226138
 GameObject:
   m_ObjectHideFlags: 0
@@ -622,7 +609,6 @@ MonoBehaviour:
   _highPlatform: {fileID: 143446, guid: 12d615eea40830e4aa5f4e445ef0a8f9, type: 2}
   _pickUp: {fileID: 112390, guid: 17bbe12bf5fc13740a066434cc3e685e, type: 2}
   _trapPlatform: {fileID: 145946, guid: 9dd42aec0e8bc2a4a991fd05c1c92764, type: 2}
-  collectPoints: {fileID: 8300000, guid: 1cf2e9b428a978b42b536fb1ec4216c7, type: 3}
 --- !u!114 &1565165072
 MonoBehaviour:
   m_ObjectHideFlags: 0
