@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Ball : MonoBehaviour {
     public GameObject _platform;
@@ -20,8 +21,12 @@ public class Ball : MonoBehaviour {
     public Material _YellowMaterial;
     public Material _GreenMaterial;
     public Material _OrangeMaterial;
+    public Material _OriginalMaterial;
+
+    public Text doublePointText ;
 
     bool isStarted = false;
+    float timer = 0;
     float speed = 3;
     void OnTap()
     {
@@ -40,8 +45,13 @@ public class Ball : MonoBehaviour {
             rb.velocity = new Vector3(0, 0, speed);
     }
 
+    void Awake()
+    {
+        doublePointText.gameObject.SetActive(false);
+    }
+
     // Use this for initialization
-	void Start () {
+    void Start () {
         
         rb = GetComponent<Rigidbody>();
         _lastPlatform = Instantiate(_platform);
@@ -60,6 +70,7 @@ public class Ball : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         OnTap();
+        DoubleTimeMaterial();
         if (isStarted)
         {
             rb.velocity = new Vector3(0, 0, speed);
@@ -198,5 +209,23 @@ public class Ball : MonoBehaviour {
         yield return new WaitForSeconds(3.5f);
         // Destroying platform
         Destroy(platform);
+    }
+
+    void DoubleTimeMaterial()
+    {
+        GameObject baller = GameObject.Find("Ball");
+        if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _BlueMaterial || baller.gameObject.GetComponent<Renderer>().sharedMaterial == _RedMaterial
+            || baller.gameObject.GetComponent<Renderer>().sharedMaterial == _GreenMaterial || baller.gameObject.GetComponent<Renderer>().sharedMaterial == _YellowMaterial
+                || baller.gameObject.GetComponent<Renderer>().sharedMaterial == _OrangeMaterial)
+        {
+            doublePointText.gameObject.SetActive(true);
+            timer += Time.deltaTime;
+            if(timer > 5)
+            {
+                doublePointText.gameObject.SetActive(false);
+                baller.gameObject.GetComponent<Renderer>().material = _OriginalMaterial;
+                timer = 0;
+            }
+        }
     }
 }

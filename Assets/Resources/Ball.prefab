@@ -45,7 +45,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: b5cc00aec3d4e9e44a1a61927856523a, type: 2}
+  - {fileID: 2100000, guid: eec4c3431b1d8b748926fc86bbd9804b, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -182,6 +182,7 @@ MonoBehaviour:
   _YellowMaterial: {fileID: 2100000, guid: 2b574882535fc8f46ac2c32364c9daae, type: 2}
   _GreenMaterial: {fileID: 2100000, guid: 2e46168b5e89dc94aa28a64cce1ebc6b, type: 2}
   _OrangeMaterial: {fileID: 2100000, guid: b5cc00aec3d4e9e44a1a61927856523a, type: 2}
+  _OriginalMaterial: {fileID: 0}
 --- !u!114 &11492366
 MonoBehaviour:
   m_ObjectHideFlags: 1

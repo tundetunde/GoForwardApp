@@ -37,8 +37,21 @@ public class PointPickUp : MonoBehaviour {
 
     void AddPoint()
     {
-        score = PlayerPrefs.GetInt("Score");
-        score++;
+        GameObject baller = GameObject.Find("Ball");
+
+        if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _BlueMaterial || baller.gameObject.GetComponent<Renderer>().sharedMaterial == _RedMaterial
+            || baller.gameObject.GetComponent<Renderer>().sharedMaterial == _GreenMaterial || baller.gameObject.GetComponent<Renderer>().sharedMaterial == _YellowMaterial
+                || baller.gameObject.GetComponent<Renderer>().sharedMaterial == _OrangeMaterial)
+        {
+            score = PlayerPrefs.GetInt("Score");
+            score += 2;
+        }
+        else
+        {
+            score = PlayerPrefs.GetInt("Score");
+            score++;
+        }
+        
         PlayerPrefs.SetInt("Score", (int)score);
     }
 
@@ -52,7 +65,7 @@ public class PointPickUp : MonoBehaviour {
                 soundSource.PlayOneShot(collectPoints, 1f);
 
             PickUpColours selectedColour = AddPickUpPoint(gameObject.tag);
-            ClearColour(selectedColour);
+            ClearColours(selectedColour);
             ChangeBallColour(ball, selectedColour);
             Destroy(gameObject, collectPoints.length + 2);
         }
@@ -120,27 +133,18 @@ public class PointPickUp : MonoBehaviour {
         return PickUpColours.NONE;
     }
 
-    //Resets the Colour that has 5 or more points Array
-    void ClearColour(PickUpColours colour)
+    //Resets the Colour Points to 0
+    void ClearColours(PickUpColours colour)
     {
-        switch (colour)
+        if(colour != PickUpColours.NONE)
         {
-            case PickUpColours.RED:
-                PlayerPrefs.SetInt("RedPickUp", 0);
-                break;
-            case PickUpColours.BLUE:
-                PlayerPrefs.SetInt("BluePickUp", 0);
-                break;
-            case PickUpColours.ORANGE:
-                PlayerPrefs.SetInt("OrangePickUp", 0);
-                break;
-            case PickUpColours.YELLOW:
-                PlayerPrefs.SetInt("YellowPickUp", 0);
-                break;
-            case PickUpColours.GREEN:
-                PlayerPrefs.SetInt("GreenPickUp", 0);
-                break;
+            PlayerPrefs.SetInt("RedPickUp", 0);
+            PlayerPrefs.SetInt("BluePickUp", 0);
+            PlayerPrefs.SetInt("OrangePickUp", 0);
+            PlayerPrefs.SetInt("YellowPickUp", 0);
+            PlayerPrefs.SetInt("GreenPickUp", 0);
         }
+        
     }
 
     void ChangeBallColour(GameObject ball, PickUpColours colour)
