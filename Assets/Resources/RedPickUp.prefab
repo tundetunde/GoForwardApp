@@ -15,8 +15,8 @@ GameObject:
   - 54: {fileID: 5492948}
   - 82: {fileID: 8274284}
   m_Layer: 0
-  m_Name: BallPickUp
-  m_TagString: Point
+  m_Name: RedPickUp
+  m_TagString: RedPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,7 +44,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 7b072bafc5685dd448c2bac5292c19e8, type: 2}
+  - {fileID: 2100000, guid: 641cd9cd64cc82c44947bed0a3f2173b, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1

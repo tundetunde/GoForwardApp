@@ -4,10 +4,22 @@ using System.Collections;
 public class Ball : MonoBehaviour {
     public GameObject _platform;
     public GameObject _highPlatform;
-    public GameObject _pickUp;
     public GameObject _trapPlatform;
     GameObject _lastPlatform;
     Rigidbody rb;
+
+    public GameObject _pickUp;
+    public GameObject _redPickUp;
+    public GameObject _bluePickUp;
+    public GameObject _yellowPickUp;
+    public GameObject _greenPickUp;
+    public GameObject _orangePickUp;
+
+    public Material _RedMaterial;
+    public Material _BlueMaterial;
+    public Material _YellowMaterial;
+    public Material _GreenMaterial;
+    public Material _OrangeMaterial;
 
     bool isStarted = false;
     float speed = 3;
@@ -124,9 +136,36 @@ public class Ball : MonoBehaviour {
                 break;
         }
 
-        randonNumber = Random.Range(0, 5);
-        if(randonNumber == 4)
-            _pickUp = SpawnPickUps.SpawnPlatform(_pickUp, _lastPlatform.transform.position.x, _lastPlatform.transform.position.y, _lastPlatform.transform.position.z);
+        randonNumber = Random.Range(0, 20);
+        //if(randonNumber == 4)
+        //    _pickUp = SpawnPickUps.SpawnPlatform(_pickUp, _lastPlatform.transform.position.x, _lastPlatform.transform.position.y, _lastPlatform.transform.position.z);
+
+        switch (randonNumber)
+        {
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+                break;
+            case 4:
+                _pickUp = SpawnPickUps.SpawnPlatform(_pickUp, _lastPlatform.transform.position.x, _lastPlatform.transform.position.y, _lastPlatform.transform.position.z);
+                break;
+            case 5:
+                _pickUp = SpawnPickUps.SpawnPlatform(_redPickUp, _lastPlatform.transform.position.x, _lastPlatform.transform.position.y, _lastPlatform.transform.position.z);
+                break;
+            case 6:
+                _pickUp = SpawnPickUps.SpawnPlatform(_bluePickUp, _lastPlatform.transform.position.x, _lastPlatform.transform.position.y, _lastPlatform.transform.position.z);
+                break;
+            case 7:
+                _pickUp = SpawnPickUps.SpawnPlatform(_yellowPickUp, _lastPlatform.transform.position.x, _lastPlatform.transform.position.y, _lastPlatform.transform.position.z);
+                break;
+            case 8:
+                _pickUp = SpawnPickUps.SpawnPlatform(_greenPickUp, _lastPlatform.transform.position.x, _lastPlatform.transform.position.y, _lastPlatform.transform.position.z);
+                break;
+            case 9:
+                _pickUp = SpawnPickUps.SpawnPlatform(_orangePickUp, _lastPlatform.transform.position.x, _lastPlatform.transform.position.y, _lastPlatform.transform.position.z);
+                break;
+        }
     }
 
     void OnCollisionExit(Collision other)
@@ -160,6 +199,4 @@ public class Ball : MonoBehaviour {
         // Destroying platform
         Destroy(platform);
     }
-
-
 }
