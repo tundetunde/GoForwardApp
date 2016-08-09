@@ -13,12 +13,10 @@
      <!-- Required for Nearby Connections API -->
         <meta-data android:name="com.google.android.gms.nearby.connection.SERVICE_ID"
             android:value="" />
-			<meta-data android:name="unityplayer.ForwardNativeEventsToDalvik"
-        android:value="true" />
 
         <!-- the space in these forces it to be interpreted as a string vs. int -->
         <meta-data android:name="com.google.android.gms.games.APP_ID"
-            android:value="\ 514142341258" />
+            android:value="\ " />
         <meta-data android:name="com.google.android.gms.games.unityVersion"
             android:value="\ 0.9.34" />
         <meta-data android:name="com.google.android.gms.version"
