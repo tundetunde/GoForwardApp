@@ -4,16 +4,18 @@ using UnityEngine.UI;
 
 public class MuteButton : MonoBehaviour {
 
-    public Text text;
     int sound;
+	public Image img;
+	public Sprite mute, unmute;
 
     void Start()
     {
-        sound = PlayerPrefs.GetInt("Sound");
-        if (sound == 1)
-            text.text = "Sound Off";
-        else
-            text.text = "Sound On";
+        sound = PlayerPrefs.GetInt("Sound");		
+		if (sound == 1) {
+			img.sprite = mute;
+		} else {
+			img.sprite = unmute;
+		}
     }
 
     public void Mute()
@@ -22,14 +24,15 @@ public class MuteButton : MonoBehaviour {
         if (sound == 1)
         {
             sound = 0;
-            text.text = "Sound On";
+			img.sprite = mute;
         }
         else
         {
             sound = 1;
-            text.text = "Sound Off";
+			img.sprite = unmute;
         }
             
         PlayerPrefs.SetInt("Sound", sound);
+		PlayerPrefs.Save();
     }
 }

@@ -288,7 +288,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Go Forward
+  m_Text: Go Space Ball
 --- !u!222 &426512216
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -685,9 +685,9 @@ RectTransform:
   - {fileID: 841317214}
   m_Father: {fileID: 2128990637}
   m_RootOrder: 2
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -96, y: -257}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -518, y: -977}
   m_SizeDelta: {x: 227, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1546039322
@@ -701,7 +701,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36fae2f8fcdc01042bfef7fe449b144f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 841317215}
+  img: {fileID: 1546039324}
+  mute: {fileID: 21300000, guid: 2f9421010c0d43846a01b18e2300656e, type: 3}
+  unmute: {fileID: 21300000, guid: 6d1b75f5f0d8ca94890e21f82720f2c2, type: 3}
 --- !u!114 &1546039323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -719,7 +721,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
     m_HighlightedColor: {r: 0.7568628, g: 0.7568628, b: 0.7568628, a: 0}
@@ -815,7 +817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf2ec86a6e6bda34faaac864b02e7fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  videoAd: ca-app-pub-6044705985167929/2142162092
+  videoAd: 63612d6170702d7075622d363034343730353938353136373932392f32313432313632303932
 --- !u!4 &2007080763
 Transform:
   m_ObjectHideFlags: 0
@@ -840,7 +842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45ddc5af11952844b972dccccd51144d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leaderboard: CgkIipGWqvsOEAIQAA
+  leaderboard: 43676b49697047577176734f454149514141
 --- !u!1 &2095695476
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,7 +879,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 174.50003, y: -45.5}
-  m_SizeDelta: {x: 313, y: 91}
+  m_SizeDelta: {x: 227, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2095695478
 MonoBehaviour:
@@ -896,17 +898,17 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 21300000, guid: bff8dec8bc3cfdc43b09cff8bacde527, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -961,8 +963,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 5118487ae04fe914882a3c5fb0039d69, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
