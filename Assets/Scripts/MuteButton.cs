@@ -8,13 +8,13 @@ public class MuteButton : MonoBehaviour {
 	public Image img;
 	public Sprite mute, unmute;
 
-    void Start()
+    void Awake()
     {
-        sound = PlayerPrefs.GetInt("Sound");		
+        sound = PlayerPrefs.GetInt("Sound", 0);		
 		if (sound == 1) {
-			img.sprite = mute;
-		} else {
 			img.sprite = unmute;
+		} else {
+			img.sprite = mute;
 		}
     }
 

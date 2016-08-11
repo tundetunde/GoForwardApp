@@ -12,7 +12,6 @@ public class LoadOnClick : MonoBehaviour {
 	public void LoadScene(int level)
     {
         PlayerPrefs.SetInt("Score", 0);
-        PlayerPrefs.SetInt("Sound", 1);
         PlayerPrefs.SetInt("BluePickUp", 0);
         PlayerPrefs.SetInt("RedPickUp", 0);
         PlayerPrefs.SetInt("GreenPickUp", 0);
