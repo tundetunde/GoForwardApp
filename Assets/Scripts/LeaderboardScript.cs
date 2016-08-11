@@ -10,8 +10,7 @@ public class LeaderboardScript : MonoBehaviour {
     void Awake() {
         if (isLoggedIn())
             gameObject.SetActive(true);
-        else
-            gameObject.SetActive(false);
+            
 
     }
 	
@@ -29,7 +28,22 @@ public class LeaderboardScript : MonoBehaviour {
 
     public void OnShowLeaderBoard()
     {
-        //        Social.ShowLeaderboardUI (); // Show all leaderboard
-        ((PlayGamesPlatform)Social.Active).ShowLeaderboardUI(leaderboard); // Show current (Active) leaderboard
+        if(isLoggedIn())
+            //        Social.ShowLeaderboardUI (); // Show all leaderboard
+            ((PlayGamesPlatform)Social.Active).ShowLeaderboardUI(leaderboard); // Show current (Active) leaderboard
+        else
+            LogIn();
+        
+    }
+
+    public void LogIn()
+    {
+            Social.localUser.Authenticate((bool success) =>
+            {
+                if (success)
+                    Debug.Log("Login Sucess");
+                else
+                    Debug.Log("Login failed");
+            });
     }
 }
