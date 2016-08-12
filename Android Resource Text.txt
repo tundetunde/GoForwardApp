@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Google Play game services IDs.
+Save this file as res/values/games-ids.xml in your project.
+-->
+<resources>
+  <string name="app_id">514142341258</string>
+  <string name="package_name">com.DualDigital.GoForward</string>
+  <string name="achievement_starter">CgkIipGWqvsOEAIQAg</string>
+  <string name="achievement_pro">CgkIipGWqvsOEAIQAw</string>
+  <string name="achievement_test3">CgkIipGWqvsOEAIQBA</string>
+  <string name="achievement_test4">CgkIipGWqvsOEAIQBQ</string>
+  <string name="achievement_test5">CgkIipGWqvsOEAIQBg</string>
+  <string name="leaderboard_leaderboard">CgkIipGWqvsOEAIQAA</string>
+</resources>
