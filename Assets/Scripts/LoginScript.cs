@@ -4,23 +4,23 @@ using UnityEngine.UI;
 using GooglePlayGames;
 
 public class LoginScript : MonoBehaviour {
-    public Text loginText;
+    public Image img;
+    public Sprite login, leaderboard;
+    public string leaderboardString;
 
     void Awake()
     {
         if (isLoggedIn())
-            loginText.text = "Log Out";
+            img.sprite = leaderboard;
         else
-            loginText.text = "Login";
+            img.sprite = login;
     }
 
     public void LogIn()
     {
         if (isLoggedIn())
         {
-            loginText.text = "Login";
-            OnLogOut();
-            
+            ((PlayGamesPlatform)Social.Active).ShowLeaderboardUI(leaderboardString);
         }
         else
         {
@@ -28,14 +28,15 @@ public class LoginScript : MonoBehaviour {
             {
                 if (success)
                 {
-                    loginText.text = "Log Out";
                     Debug.Log("Login Sucess");
+                    img.sprite = leaderboard;
                 }
                 else
                 {
                     Debug.Log("Login failed");
                 }
             });
+
         }
         
     }
