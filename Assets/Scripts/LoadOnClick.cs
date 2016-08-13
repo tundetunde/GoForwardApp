@@ -6,7 +6,7 @@ public class LoadOnClick : MonoBehaviour {
 
     void Start()
     {
-        AdManager.Instance.ShowBanner();
+        // AdManager.Instance.ShowBanner();
     }
 
 	public void LoadScene(int level)
