@@ -4,34 +4,41 @@ using System.Collections;
 
 public class PauseButton : MonoBehaviour {
 
-	public Image img;
-	public Sprite play, pause;
-	public bool click;
-	
+	public bool isPaused;
+	public GameObject menu;
+
 	// Use this for initialization
 	void Start () {
-		click = true;
+		isPaused = false;
 	}
 	
 	public void Halt () {
-		if (Time.timeScale == 1)
-         {
-             Time.timeScale = 0;
-			 img.sprite = play;
-			 click = false;
-         }
-         else
-         {
-             Time.timeScale = 1;
-			 img.sprite = pause;
-			 click = true;
-         }
+        Time.timeScale = 0;
+		menu.SetActive(true);
+		isPaused = true;
+	}
+	
+	public void Resume (){
+		Time.timeScale = 1;
+		menu.SetActive(false);
+		isPaused = false;
 	}
 	
 	void Update	()	{
 		if (Input.GetKey(KeyCode.Escape) || Input.GetKey(KeyCode.Home)
-			|| Input.GetKey(KeyCode.Menu)) { 
-			Halt(); 
+			|| Input.GetKey(KeyCode.Menu)) {
+				isPaused = true;
+				Halt();
 		}
 	}
+	
+	void OnApplicationPause (bool state) {
+		 isPaused = true;
+		Halt();
+	}
+	
+	void OnApplicationFocus(bool focus){
+		isPaused = true;
+		Halt();
+    }
 }

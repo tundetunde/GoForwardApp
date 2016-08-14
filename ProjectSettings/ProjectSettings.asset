@@ -175,7 +175,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 941732bca14be5a418c81a959f377c04, type: 3}
+      m_Icon: {fileID: 2800000, guid: b52927a5ec5b2814d8a8d021a3372a1d, type: 3}
       m_Width: 128
       m_Height: 128
   m_BuildTargetBatching: []
@@ -336,6 +336,7 @@ PlayerSettings:
   psmSplashimage: {fileID: 0}
   spritePackerPolicy: 
   scriptingDefineSymbols:
+    1: Pause;Canvas
     4: 
     7: 
   metroPackageName: Go Forward
