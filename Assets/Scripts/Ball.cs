@@ -61,7 +61,7 @@ public class Ball : MonoBehaviour {
             SpawnStartingPlatform();
         }
 
-        for (int index = 0; index < 70; index++)
+        for (int index = 0; index < 200; index++)
         {
             SpawnPlatform();
         }
@@ -147,9 +147,7 @@ public class Ball : MonoBehaviour {
                 break;
         }
 
-        randonNumber = Random.Range(0, 20);
-        //if(randonNumber == 4)
-        //    _pickUp = SpawnPickUps.SpawnPlatform(_pickUp, _lastPlatform.transform.position.x, _lastPlatform.transform.position.y, _lastPlatform.transform.position.z);
+        randonNumber = Random.Range(0, 40);
 
         switch (randonNumber)
         {
@@ -219,10 +217,32 @@ public class Ball : MonoBehaviour {
                 || baller.gameObject.GetComponent<Renderer>().sharedMaterial == _OrangeMaterial)
         {
             doublePointText.gameObject.SetActive(true);
+            if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _GreenMaterial)
+                doublePointText.text = "DOUBLE SCORE";
+            if(baller.gameObject.GetComponent<Renderer>().sharedMaterial == _YellowMaterial)
+            {
+                doublePointText.text = "SONIC SPEED";
+                speed = 4;
+            }
+            if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _BlueMaterial)
+                doublePointText.text = "SONIC SUCTION";
+            if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _RedMaterial)
+                doublePointText.text = "ANTI-GRAVITY";
+            if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _OrangeMaterial)
+                doublePointText.text = "I DUNNO YET";
+
             timer += Time.deltaTime;
             if(timer > 5)
             {
-                doublePointText.gameObject.SetActive(false);
+                if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _RedMaterial)
+                    baller.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _YellowMaterial)
+                    speed = 3;
+                if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _BlueMaterial)
+                    PlayerPrefs.SetInt("SuckerPower", 0);
+                if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _GreenMaterial)
+                    doublePointText.gameObject.SetActive(false);
+                
                 baller.gameObject.GetComponent<Renderer>().material = _OriginalMaterial;
                 timer = 0;
             }
