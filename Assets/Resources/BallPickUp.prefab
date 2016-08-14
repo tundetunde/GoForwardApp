@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1da88e8b389c1a343b643c2cafbcfd20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectPoints: {fileID: 8300000, guid: 1cf2e9b428a978b42b536fb1ec4216c7, type: 3}
+  collectPoints: {fileID: 8300000, guid: 2881ba4a414dd23428b58e0d7528eca0, type: 3}
   ball: {fileID: 130974, guid: bf07122cdb0cad945bc4bc3e254111c8, type: 2}
   _RedMaterial: {fileID: 2100000, guid: 641cd9cd64cc82c44947bed0a3f2173b, type: 2}
   _BlueMaterial: {fileID: 2100000, guid: 186c19e2823c96a4e96eeedefab484f9, type: 2}
