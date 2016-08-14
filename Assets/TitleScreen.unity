@@ -502,7 +502,7 @@ GameObject:
   - 222: {fileID: 1940799099}
   - 114: {fileID: 1940799098}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Logo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -758,7 +758,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   img: {fileID: 2095695479}
-  login: {fileID: 21300000, guid: 5118487ae04fe914882a3c5fb0039d69, type: 3}
+  login: {fileID: 21300000, guid: 84bca9c75a0eeb14b9919d471072e933, type: 3}
   leaderboard: {fileID: 21300000, guid: 7212f9328fde4264fac5ce1d6f5fdd7a, type: 3}
   leaderboardString: CgkIipGWqvsOEAIQAA
 --- !u!1 &2128990632
