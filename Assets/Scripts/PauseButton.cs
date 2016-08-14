@@ -27,4 +27,11 @@ public class PauseButton : MonoBehaviour {
 			 click = true;
          }
 	}
+	
+	void Update	()	{
+		if (Input.GetKey(KeyCode.Escape) || Input.GetKey(KeyCode.Home)
+			|| Input.GetKey(KeyCode.Menu)) { 
+			Halt(); 
+		}
+	}
 }

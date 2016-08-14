@@ -10,7 +10,7 @@ public class ScoreScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         txt = gameObject.GetComponent<Text>();
-        txt.text = "Score: " + (int)score;
+        txt.text = "" + (int)score;
     }
 	
 	// Update is called once per frame
@@ -18,7 +18,7 @@ public class ScoreScript : MonoBehaviour {
         if(ball.transform.position.y < 0)
             SceneManager.LoadScene("GameOverScene");
         score = PlayerPrefs.GetInt("Score");
-        txt.text = "Score: " + (int)score;
+        txt.text = "" + (int)score;
         //PlayerPrefs.SetInt("Score", (int)score);
     }
 }

@@ -35,13 +35,27 @@ public class PointPickUp : MonoBehaviour {
         score = PlayerPrefs.GetInt("Score");
     }
 
+    void Update()
+    {
+        GameObject baller = GameObject.Find("Ball");
+        if(PlayerPrefs.GetInt("SuckerPower", 0) != 0)
+        {
+            if (baller != null)
+            {
+                if(Vector3.Distance(baller.gameObject.transform.position, gameObject.transform.position) < 7)
+                {
+                    this.transform.LookAt(baller.transform);
+                    this.transform.position = Vector3.Lerp(transform.position, baller.transform.position, Time.deltaTime * 3);
+                }
+            }
+        }
+    }
+
     void AddPoint()
     {
         GameObject baller = GameObject.Find("Ball");
 
-        if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _BlueMaterial || baller.gameObject.GetComponent<Renderer>().sharedMaterial == _RedMaterial
-            || baller.gameObject.GetComponent<Renderer>().sharedMaterial == _GreenMaterial || baller.gameObject.GetComponent<Renderer>().sharedMaterial == _YellowMaterial
-                || baller.gameObject.GetComponent<Renderer>().sharedMaterial == _OrangeMaterial)
+        if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _GreenMaterial)
         {
             score = PlayerPrefs.GetInt("Score");
             score += 2;
@@ -154,15 +168,20 @@ public class PointPickUp : MonoBehaviour {
         {
             case PickUpColours.RED:
                 baller.gameObject.GetComponent<Renderer>().material = _RedMaterial;
+                if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _RedMaterial)
+                    baller.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
                 break;
             case PickUpColours.BLUE:
                 baller.gameObject.GetComponent<Renderer>().material = _BlueMaterial;
+                PlayerPrefs.SetInt("SuckerPower", 1);
                 break;
             case PickUpColours.ORANGE:
                 baller.gameObject.GetComponent<Renderer>().material = _OrangeMaterial;
                 break;
             case PickUpColours.YELLOW:
                 baller.gameObject.GetComponent<Renderer>().material = _YellowMaterial;
+                if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _YellowMaterial)
+                    baller.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 4);
                 break;
             case PickUpColours.GREEN:
                 baller.gameObject.GetComponent<Renderer>().material = _GreenMaterial;
