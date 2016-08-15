@@ -23,6 +23,10 @@ public class PauseButton : MonoBehaviour {
 		menu.SetActive(false);
 		isPaused = false;
 	}
+
+	public void ExitGame(){
+		Application.Quit ();
+	}
 	
 	void Update	()	{
 		if (Input.GetKey(KeyCode.Escape) || Input.GetKey(KeyCode.Home)
