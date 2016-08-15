@@ -325,8 +325,9 @@ GameObject:
   - 223: {fileID: 223942744}
   - 114: {fileID: 223942743}
   - 114: {fileID: 223942742}
+  - 114: {fileID: 223942745}
   m_Layer: 0
-  m_Name: Pause Canvas
+  m_Name: Shop Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -408,6 +409,19 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &223942745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 223942740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feb8463cad03e1b45a4eb5134f45abb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menu: {fileID: 1779204385}
+  text: {fileID: 1113830647}
 --- !u!1 &278575076
 GameObject:
   m_ObjectHideFlags: 0
@@ -696,11 +710,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1490408562}
         m_MethodName: GoToShop
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -815,7 +829,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 676342933}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1490408562}
+        m_MethodName: BuyBalls
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &676342933
@@ -959,7 +984,7 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -14, y: 53}
+  m_AnchoredPosition: {x: -14, y: 41}
   m_SizeDelta: {x: 343, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &911081283
@@ -1003,7 +1028,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1490408562}
         m_MethodName: GoToShop
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1123,13 +1148,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1490408556}
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 1490408562}
+        m_MethodName: BuyBalls
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1254,7 +1279,7 @@ GameObject:
   - 222: {fileID: 1113830648}
   - 114: {fileID: 1113830647}
   m_Layer: 5
-  m_Name: Pause Text
+  m_Name: Title Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1662,7 +1687,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1350027610}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1490408562}
+        m_MethodName: BuyBalls
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1350027610
@@ -1847,7 +1883,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1432695737}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1490408562}
+        m_MethodName: BuyBalls
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 10
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1432695737
@@ -1997,6 +2044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menu: {fileID: 1779204385}
+  text: {fileID: 1113830647}
 --- !u!1 &1606851421
 GameObject:
   m_ObjectHideFlags: 0
@@ -2075,11 +2123,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1490408562}
         m_MethodName: GoToShop
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2344,11 +2392,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1490408562}
         m_MethodName: GoToShop
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2471,12 +2519,12 @@ GameObject:
   m_Component:
   - 4: {fileID: 1779204386}
   m_Layer: 0
-  m_Name: PauseMenu
+  m_Name: ShopMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1779204386
 Transform:
   m_ObjectHideFlags: 0
@@ -2643,11 +2691,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1490408562}
         m_MethodName: GoToShop
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
