@@ -102,12 +102,12 @@ public class Ball : MonoBehaviour {
                     if (randonNumber2 == 4)
                         _lastPlatform = Instantiate(_platform, new Vector3(_lastPlatform.transform.position.x,
                         _lastPlatform.transform.position.y,
-                        _lastPlatform.transform.position.z + 1),
+                        _lastPlatform.transform.position.z + 1.5f),
                         Quaternion.identity) as GameObject;
                     else
                         _lastPlatform = Instantiate(_platform, new Vector3(_lastPlatform.transform.position.x,
                         _lastPlatform.transform.position.y,
-                        _lastPlatform.transform.position.z + 1),
+                        _lastPlatform.transform.position.z + 1.5f),
                         Quaternion.identity) as GameObject;
                     
                 }
@@ -117,12 +117,12 @@ public class Ball : MonoBehaviour {
                 {
                     // Creating a new platform, setting position w.r.t. last platform and after that assigning it as lastPlatform
                     if (randonNumber2 == 4)
-                        _lastPlatform = Instantiate(_platform, new Vector3(_lastPlatform.transform.position.x - 1,
+                        _lastPlatform = Instantiate(_platform, new Vector3(_lastPlatform.transform.position.x - 1.5f,
                         _lastPlatform.transform.position.y,
                         _lastPlatform.transform.position.z),
                         Quaternion.identity) as GameObject;
                     else
-                        _lastPlatform = Instantiate(_platform, new Vector3(_lastPlatform.transform.position.x - 1,
+                        _lastPlatform = Instantiate(_platform, new Vector3(_lastPlatform.transform.position.x - 1.5f,
                         _lastPlatform.transform.position.y,
                         _lastPlatform.transform.position.z),
                         Quaternion.identity) as GameObject;
@@ -132,13 +132,13 @@ public class Ball : MonoBehaviour {
                 {
                     if (randonNumber2 == 4)
                         // Creating a new platform, setting position w.r.t. last platform and after that assigning it as lastPlatform
-                        _lastPlatform = Instantiate(_platform, new Vector3(_lastPlatform.transform.position.x + 1,
+                        _lastPlatform = Instantiate(_platform, new Vector3(_lastPlatform.transform.position.x + 1.5f,
                         _lastPlatform.transform.position.y,
                         _lastPlatform.transform.position.z),
                         Quaternion.identity) as GameObject;
                     else
                         // Creating a new platform, setting position w.r.t. last platform and after that assigning it as lastPlatform
-                        _lastPlatform = Instantiate(_platform, new Vector3(_lastPlatform.transform.position.x + 1,
+                        _lastPlatform = Instantiate(_platform, new Vector3(_lastPlatform.transform.position.x + 1.5f,
                         _lastPlatform.transform.position.y,
                         _lastPlatform.transform.position.z),
                         Quaternion.identity) as GameObject;
