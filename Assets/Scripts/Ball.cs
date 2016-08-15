@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
 public class Ball : MonoBehaviour {
     public GameObject _platform;
@@ -24,6 +25,7 @@ public class Ball : MonoBehaviour {
     public Material _OriginalMaterial;
 
     public Text doublePointText ;
+    public Text timeText;
 
     bool isStarted = false;
     float timer = 0;
@@ -48,6 +50,29 @@ public class Ball : MonoBehaviour {
     void Awake()
     {
         doublePointText.gameObject.SetActive(false);
+        switch (UseBall.colour)
+        {
+            case UseBall.COLOURS.BLUE:
+                gameObject.GetComponent<Renderer>().material = _BlueMaterial;
+                PlayerPrefs.SetInt("SuckerPower", 1);
+                break;
+            case UseBall.COLOURS.YELLOW:
+                gameObject.GetComponent<Renderer>().material = _YellowMaterial;
+                speed = 4;
+                break;
+            case UseBall.COLOURS.RED:
+                gameObject.GetComponent<Renderer>().material = _RedMaterial;
+                break;
+            case UseBall.COLOURS.GREEN:
+                gameObject.GetComponent<Renderer>().material = _GreenMaterial;
+                break;
+            case UseBall.COLOURS.ORANGE:
+                gameObject.GetComponent<Renderer>().material = _OrangeMaterial;
+                break;
+            default:
+                gameObject.GetComponent<Renderer>().material = _OriginalMaterial;
+                break;
+        }
     }
 
     // Use this for initialization
@@ -91,8 +116,8 @@ public class Ball : MonoBehaviour {
     void SpawnPlatform()
     {
         // Generating random number between 0 and 1. That will decide that the new platform should create either on left or right
-        int randonNumber = Random.Range(0, 3);
-        int randonNumber2 = Random.Range(0, 5);
+        int randonNumber = UnityEngine.Random.Range(0, 3);
+        int randonNumber2 = UnityEngine.Random.Range(0, 5);
 
         switch (randonNumber)
         {
@@ -147,7 +172,7 @@ public class Ball : MonoBehaviour {
                 break;
         }
 
-        randonNumber = Random.Range(0, 40);
+        randonNumber = UnityEngine.Random.Range(0, 40);
 
         switch (randonNumber)
         {
@@ -232,8 +257,11 @@ public class Ball : MonoBehaviour {
                 doublePointText.text = "I DUNNO YET";
 
             timer += Time.deltaTime;
-            if(timer > 5)
+            timeText.gameObject.SetActive(true);
+            timeText.text = Convert.ToString(Convert.ToInt32(timer));
+            if (timer > 5)
             {
+                timeText.gameObject.SetActive(false);
                 if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _RedMaterial)
                     baller.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _YellowMaterial)
@@ -242,8 +270,30 @@ public class Ball : MonoBehaviour {
                     PlayerPrefs.SetInt("SuckerPower", 0);
                 if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _GreenMaterial)
                     doublePointText.gameObject.SetActive(false);
-                
-                baller.gameObject.GetComponent<Renderer>().material = _OriginalMaterial;
+
+                switch (UseBall.colour)
+                {
+                    case UseBall.COLOURS.BLUE:
+                        baller.gameObject.GetComponent<Renderer>().material = _BlueMaterial;
+                        PlayerPrefs.SetInt("SuckerPower", 1);
+                        break;
+                    case UseBall.COLOURS.YELLOW:
+                        baller.gameObject.GetComponent<Renderer>().material = _YellowMaterial;
+                        speed = 4;
+                        break;
+                    case UseBall.COLOURS.RED:
+                        baller.gameObject.GetComponent<Renderer>().material = _RedMaterial;
+                        break;
+                    case UseBall.COLOURS.GREEN:
+                        baller.gameObject.GetComponent<Renderer>().material = _GreenMaterial;
+                        break;
+                    case UseBall.COLOURS.ORANGE:
+                        baller.gameObject.GetComponent<Renderer>().material = _OrangeMaterial;
+                        break;
+                    default:
+                        baller.gameObject.GetComponent<Renderer>().material = _OriginalMaterial;
+                        break;
+                }
                 timer = 0;
             }
         }

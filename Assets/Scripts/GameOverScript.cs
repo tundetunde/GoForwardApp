@@ -12,6 +12,7 @@ public class GameOverScript : MonoBehaviour {
         PlayerPrefs.SetInt("GreenPickUp", 0);
         PlayerPrefs.SetInt("OrangePickUp", 0);
         PlayerPrefs.SetInt("YellowPickUp", 0);
+        PlayerPrefs.SetInt("SuckerPower", 0);
         SceneManager.LoadScene("GameScene");
     }
 }
