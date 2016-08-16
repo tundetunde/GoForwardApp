@@ -167,23 +167,28 @@ public class PointPickUp : MonoBehaviour {
         switch (colour)
         {
             case PickUpColours.RED:
+                Ball.pickUp = true;
                 baller.gameObject.GetComponent<Renderer>().material = _RedMaterial;
                 if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _RedMaterial)
                     baller.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
                 break;
             case PickUpColours.BLUE:
+                Ball.pickUp = true;
                 baller.gameObject.GetComponent<Renderer>().material = _BlueMaterial;
                 PlayerPrefs.SetInt("SuckerPower", 1);
                 break;
             case PickUpColours.ORANGE:
+                Ball.pickUp = true;
                 baller.gameObject.GetComponent<Renderer>().material = _OrangeMaterial;
                 break;
             case PickUpColours.YELLOW:
+                Ball.pickUp = true;
                 baller.gameObject.GetComponent<Renderer>().material = _YellowMaterial;
                 if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _YellowMaterial)
                     baller.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 4);
                 break;
             case PickUpColours.GREEN:
+                Ball.pickUp = true;
                 baller.gameObject.GetComponent<Renderer>().material = _GreenMaterial;
                 break;
         }

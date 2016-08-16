@@ -28,6 +28,7 @@ public class Ball : MonoBehaviour {
     public Text timeText;
 
     bool isStarted = false;
+    public static bool pickUp = false;
     float timer = 0;
     float speed = 3;
     void OnTap()
@@ -50,6 +51,7 @@ public class Ball : MonoBehaviour {
     void Awake()
     {
         doublePointText.gameObject.SetActive(false);
+        timeText.gameObject.SetActive(false);
         switch (UseBall.colour)
         {
             case UseBall.COLOURS.BLUE:
@@ -68,6 +70,7 @@ public class Ball : MonoBehaviour {
                 break;
             case UseBall.COLOURS.RED:
                 gameObject.GetComponent<Renderer>().material = _RedMaterial;
+                gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
                 int redBall = PlayerPrefs.GetInt("RedBalls");
                 redBall--;
                 PlayerPrefs.SetInt("RedBalls", redBall);
@@ -252,9 +255,9 @@ public class Ball : MonoBehaviour {
     void DoubleTimeMaterial()
     {
         GameObject baller = GameObject.Find("Ball");
-        if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _BlueMaterial || baller.gameObject.GetComponent<Renderer>().sharedMaterial == _RedMaterial
+        if ((baller.gameObject.GetComponent<Renderer>().sharedMaterial == _BlueMaterial || baller.gameObject.GetComponent<Renderer>().sharedMaterial == _RedMaterial
             || baller.gameObject.GetComponent<Renderer>().sharedMaterial == _GreenMaterial || baller.gameObject.GetComponent<Renderer>().sharedMaterial == _YellowMaterial
-                || baller.gameObject.GetComponent<Renderer>().sharedMaterial == _OrangeMaterial)
+                || baller.gameObject.GetComponent<Renderer>().sharedMaterial == _OrangeMaterial) && pickUp == true)
         {
             doublePointText.gameObject.SetActive(true);
             if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _GreenMaterial)
@@ -276,6 +279,7 @@ public class Ball : MonoBehaviour {
             timeText.text = Convert.ToString(Convert.ToInt32(5.0f - timer));
             if (timer > 5)
             {
+                pickUp = false;
                 timeText.gameObject.SetActive(false);
                 if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _RedMaterial)
                     baller.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
@@ -298,6 +302,7 @@ public class Ball : MonoBehaviour {
                         break;
                     case UseBall.COLOURS.RED:
                         baller.gameObject.GetComponent<Renderer>().material = _RedMaterial;
+                        gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
                         break;
                     case UseBall.COLOURS.GREEN:
                         baller.gameObject.GetComponent<Renderer>().material = _GreenMaterial;

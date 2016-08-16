@@ -7,7 +7,7 @@ public class RateButton : MonoBehaviour {
     {
 #if UNITY_EDITOR
 #elif UNITY_ANDROID
-            Application.OpenURL("market://play.google.com/store/apps/details?id=com.dualdigital.cupidshooter");
+            Application.OpenURL("market://play.google.com/store/apps/details?id=com.DualDigital.GoForward");
 #elif UNITY_IOS
             Application.OpenURL("market://details?id=YOUR_ID");
 #endif
