@@ -55,19 +55,34 @@ public class Ball : MonoBehaviour {
             case UseBall.COLOURS.BLUE:
                 gameObject.GetComponent<Renderer>().material = _BlueMaterial;
                 PlayerPrefs.SetInt("SuckerPower", 1);
+                int blueball = PlayerPrefs.GetInt("BlueBalls");
+                blueball--;
+                PlayerPrefs.SetInt("BlueBalls", blueball);
                 break;
             case UseBall.COLOURS.YELLOW:
                 gameObject.GetComponent<Renderer>().material = _YellowMaterial;
                 speed = 4;
+                int yellowBall = PlayerPrefs.GetInt("YellowBalls");
+                yellowBall--;
+                PlayerPrefs.SetInt("YellowBalls", yellowBall);
                 break;
             case UseBall.COLOURS.RED:
                 gameObject.GetComponent<Renderer>().material = _RedMaterial;
+                int redBall = PlayerPrefs.GetInt("RedBalls");
+                redBall--;
+                PlayerPrefs.SetInt("RedBalls", redBall);
                 break;
             case UseBall.COLOURS.GREEN:
                 gameObject.GetComponent<Renderer>().material = _GreenMaterial;
+                int greenBall = PlayerPrefs.GetInt("GreenBalls");
+                greenBall--;
+                PlayerPrefs.SetInt("GreenBalls", greenBall);
                 break;
             case UseBall.COLOURS.ORANGE:
                 gameObject.GetComponent<Renderer>().material = _OrangeMaterial;
+                int orangeBall = PlayerPrefs.GetInt("OrangeBalls");
+                orangeBall--;
+                PlayerPrefs.SetInt("OrangeBalls", orangeBall);
                 break;
             default:
                 gameObject.GetComponent<Renderer>().material = _OriginalMaterial;
@@ -258,7 +273,7 @@ public class Ball : MonoBehaviour {
 
             timer += Time.deltaTime;
             timeText.gameObject.SetActive(true);
-            timeText.text = Convert.ToString(Convert.ToInt32(timer));
+            timeText.text = Convert.ToString(Convert.ToInt32(5.0f - timer));
             if (timer > 5)
             {
                 timeText.gameObject.SetActive(false);
@@ -298,4 +313,5 @@ public class Ball : MonoBehaviour {
             }
         }
     }
+
 }

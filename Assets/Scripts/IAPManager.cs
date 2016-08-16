@@ -10,30 +10,30 @@ public class IAPManager : MonoBehaviour, IStoreListener
     private static IStoreController m_StoreController;          // The Unity Purchasing system.
     private static IExtensionProvider m_StoreExtensionProvider; // The store-specific Purchasing subsystems.
 
-    public static string PRODUCT_1_BLUE = "consumable";
-    public static string PRODUCT_2_BLUE = "consumable";
-    public static string PRODUCT_5_BLUE = "consumable";
-    public static string PRODUCT_10_BLUE = "consumable";
+    public static string PRODUCT_1_BLUE = "blue1ball";
+    public static string PRODUCT_2_BLUE = "blue2ball";
+    public static string PRODUCT_5_BLUE = "blue5ball";
+    public static string PRODUCT_10_BLUE = "blue10ball";
 
-    public static string PRODUCT_1_YELLOW = "consumable";
-    public static string PRODUCT_2_YELLOW = "consumable";
-    public static string PRODUCT_5_YELLOW = "consumable";
-    public static string PRODUCT_10_YELLOW = "consumable";
+    public static string PRODUCT_1_YELLOW = "yellow1ball";
+    public static string PRODUCT_2_YELLOW = "yellow2ball";
+    public static string PRODUCT_5_YELLOW = "yellow5ball";
+    public static string PRODUCT_10_YELLOW = "yellow10ball";
 
-    public static string PRODUCT_1_GREEN = "consumable";
-    public static string PRODUCT_2_GREEN = "consumable";
-    public static string PRODUCT_5_GREEN = "consumable";
-    public static string PRODUCT_10_GREEN = "consumable";
+    public static string PRODUCT_1_GREEN = "green1ball";
+    public static string PRODUCT_2_GREEN = "green2ball";
+    public static string PRODUCT_5_GREEN = "green5ball";
+    public static string PRODUCT_10_GREEN = "green10ball";
 
-    public static string PRODUCT_1_ORANGE = "consumable";
-    public static string PRODUCT_2_ORANGE = "consumable";
-    public static string PRODUCT_5_ORANGE = "consumable";
-    public static string PRODUCT_10_ORANGE = "consumable";
+    public static string PRODUCT_1_ORANGE = "orange1ball";
+    public static string PRODUCT_2_ORANGE = "orange2ball";
+    public static string PRODUCT_5_ORANGE = "orange5ball";
+    public static string PRODUCT_10_ORANGE = "orange10ball";
 
-    public static string PRODUCT_1_RED = "consumable";
-    public static string PRODUCT_2_RED = "consumable";
-    public static string PRODUCT_5_RED = "consumable";
-    public static string PRODUCT_10_RED = "consumable";
+    public static string PRODUCT_1_RED = "red1ball";
+    public static string PRODUCT_2_RED = "red2ball";
+    public static string PRODUCT_5_RED = "red5ball";
+    public static string PRODUCT_10_RED = "red10ball";
 
     public static string kProductIDConsumable = "consumable";
     public static string kProductIDNonConsumable = "nonconsumable";

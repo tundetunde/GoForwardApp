@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ShopScript : MonoBehaviour {
     public GameObject menu;
@@ -21,6 +22,7 @@ public class ShopScript : MonoBehaviour {
 
     void Awake()
     {
+        TestUseButtons();
         switch (colour)
         {
             case COLOURS.BLUE:
@@ -40,6 +42,11 @@ public class ShopScript : MonoBehaviour {
                 break;
 
         }
+    }
+
+    public void BackToHome()
+    {
+        SceneManager.LoadScene("TitleScreen");
     }
 
     public void GoToShop(int number)
@@ -116,5 +123,14 @@ public class ShopScript : MonoBehaviour {
     {
         //IAPManager.Instance.BuyGreenBalls(amount);
         Debug.Log("Buying Green Balls");
+    }
+
+    private void TestUseButtons()
+    {
+        PlayerPrefs.SetInt("BlueBalls", 1);
+        PlayerPrefs.SetInt("YellowBalls", 1);
+        PlayerPrefs.SetInt("GreenBalls", 1);
+        PlayerPrefs.SetInt("RedBalls", 1);
+        PlayerPrefs.SetInt("OrangeBalls", 1);
     }
 }

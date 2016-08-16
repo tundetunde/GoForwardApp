@@ -4,6 +4,11 @@ using UnityEngine.SceneManagement;
 
 public class GameOverScript : MonoBehaviour {
 
+    void Awake()
+    {
+        UseBall.colour = UseBall.COLOURS.NONE;
+    }
+
     public void LoadScene(int level)
     {
         PlayerPrefs.SetInt("Score", 0);

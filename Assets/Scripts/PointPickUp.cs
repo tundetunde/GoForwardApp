@@ -45,7 +45,7 @@ public class PointPickUp : MonoBehaviour {
                 if(Vector3.Distance(baller.gameObject.transform.position, gameObject.transform.position) < 7)
                 {
                     this.transform.LookAt(baller.transform);
-                    this.transform.position = Vector3.Lerp(transform.position, baller.transform.position, Time.deltaTime * 3);
+                    this.transform.position = Vector3.Lerp(transform.position, baller.transform.position, Time.deltaTime * 7);
                 }
             }
         }
