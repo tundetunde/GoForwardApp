@@ -28,7 +28,7 @@ public class Ball : MonoBehaviour {
     public Text timeText;
 
     bool isStarted = false;
-    public static bool pickUp = false;
+    public static bool startingPower = false;
     float timer = 0;
     float speed = 3;
     void OnTap()
@@ -60,6 +60,7 @@ public class Ball : MonoBehaviour {
                 int blueball = PlayerPrefs.GetInt("BlueBalls");
                 blueball--;
                 PlayerPrefs.SetInt("BlueBalls", blueball);
+                startingPower = true;
                 break;
             case UseBall.COLOURS.YELLOW:
                 gameObject.GetComponent<Renderer>().material = _YellowMaterial;
@@ -67,6 +68,7 @@ public class Ball : MonoBehaviour {
                 int yellowBall = PlayerPrefs.GetInt("YellowBalls");
                 yellowBall--;
                 PlayerPrefs.SetInt("YellowBalls", yellowBall);
+                startingPower = true;
                 break;
             case UseBall.COLOURS.RED:
                 gameObject.GetComponent<Renderer>().material = _RedMaterial;
@@ -74,18 +76,21 @@ public class Ball : MonoBehaviour {
                 int redBall = PlayerPrefs.GetInt("RedBalls");
                 redBall--;
                 PlayerPrefs.SetInt("RedBalls", redBall);
+                startingPower = true;
                 break;
             case UseBall.COLOURS.GREEN:
                 gameObject.GetComponent<Renderer>().material = _GreenMaterial;
                 int greenBall = PlayerPrefs.GetInt("GreenBalls");
                 greenBall--;
                 PlayerPrefs.SetInt("GreenBalls", greenBall);
+                startingPower = true;
                 break;
             case UseBall.COLOURS.ORANGE:
                 gameObject.GetComponent<Renderer>().material = _OrangeMaterial;
                 int orangeBall = PlayerPrefs.GetInt("OrangeBalls");
                 orangeBall--;
                 PlayerPrefs.SetInt("OrangeBalls", orangeBall);
+                startingPower = true;
                 break;
             default:
                 gameObject.GetComponent<Renderer>().material = _OriginalMaterial;
@@ -255,9 +260,9 @@ public class Ball : MonoBehaviour {
     void DoubleTimeMaterial()
     {
         GameObject baller = GameObject.Find("Ball");
-        if ((baller.gameObject.GetComponent<Renderer>().sharedMaterial == _BlueMaterial || baller.gameObject.GetComponent<Renderer>().sharedMaterial == _RedMaterial
+        if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _BlueMaterial || baller.gameObject.GetComponent<Renderer>().sharedMaterial == _RedMaterial
             || baller.gameObject.GetComponent<Renderer>().sharedMaterial == _GreenMaterial || baller.gameObject.GetComponent<Renderer>().sharedMaterial == _YellowMaterial
-                || baller.gameObject.GetComponent<Renderer>().sharedMaterial == _OrangeMaterial) && pickUp == true)
+                || baller.gameObject.GetComponent<Renderer>().sharedMaterial == _OrangeMaterial)
         {
             doublePointText.gameObject.SetActive(true);
             if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _GreenMaterial)
@@ -273,13 +278,17 @@ public class Ball : MonoBehaviour {
                 doublePointText.text = "ANTI-GRAVITY";
             if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _OrangeMaterial)
                 doublePointText.text = "I DUNNO YET";
-
+            
             timer += Time.deltaTime;
             timeText.gameObject.SetActive(true);
-            timeText.text = Convert.ToString(Convert.ToInt32(5.0f - timer));
-            if (timer > 5)
+            if(startingPower)
+                timeText.text = Convert.ToString(Convert.ToInt32(60.0f - timer));
+            else
+                timeText.text = Convert.ToString(Convert.ToInt32(5.0f - timer));
+             
+            if ((startingPower && timer > 60) || (!startingPower && timer > 5))
             {
-                pickUp = false;
+                    
                 timeText.gameObject.SetActive(false);
                 if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _RedMaterial)
                     baller.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
@@ -289,6 +298,14 @@ public class Ball : MonoBehaviour {
                     PlayerPrefs.SetInt("SuckerPower", 0);
                 if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _GreenMaterial)
                     doublePointText.gameObject.SetActive(false);
+
+                if (startingPower)
+                {
+                    startingPower = false;
+                    baller.gameObject.GetComponent<Renderer>().material = _OriginalMaterial;
+                    UseBall.colour = UseBall.COLOURS.NONE;
+                    doublePointText.gameObject.SetActive(false);
+                }
 
                 switch (UseBall.colour)
                 {

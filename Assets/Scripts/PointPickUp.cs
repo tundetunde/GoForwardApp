@@ -89,61 +89,64 @@ public class PointPickUp : MonoBehaviour {
     PickUpColours AddPickUpPoint(string tag)
     {
         Debug.Log("Adding Point.");
-        switch (tag)
+        if (!Ball.startingPower)
         {
-            case "RedPoint":
-                int redPoint = PlayerPrefs.GetInt("RedPickUp");
-                redPoint++;
-                PlayerPrefs.SetInt("RedPickUp", redPoint);
-                if (redPoint == 5)
-                {
-                    Debug.Log("RED HIT 5");
-                    return PickUpColours.RED;
-                }
-                    
-                break;
-            case "BluePoint":
-                int bluePoint = PlayerPrefs.GetInt("BluePickUp");
-                bluePoint++;
-                PlayerPrefs.SetInt("BluePickUp", bluePoint);
-                if (bluePoint == 5)
-                {
-                    Debug.Log("BLUE HIT 5");
-                    return PickUpColours.BLUE;
-                }
-                break;
-            case "YellowPoint":
-                int yellowPoint = PlayerPrefs.GetInt("YellowPickUp");
-                yellowPoint++;
-                PlayerPrefs.SetInt("YellowPickUp", yellowPoint);
-                if (yellowPoint == 5)
-                {
-                    Debug.Log("YELLOW HIT 5");
-                    return PickUpColours.YELLOW;
-                }
-                break;
-            case "GreenPoint":
-                int greenPoint = PlayerPrefs.GetInt("GreenPickUp");
-                greenPoint++;
-                PlayerPrefs.SetInt("GreenPickUp", greenPoint);
-                if (greenPoint == 5)
-                {
-                    Debug.Log("GREEN HIT 5");
-                    return PickUpColours.GREEN;
-                }
-                break;
-            case "OrangePoint":
-                int orangePoint = PlayerPrefs.GetInt("OrangePickUp");
-                orangePoint++;
-                PlayerPrefs.SetInt("OrangePickUp", orangePoint);
-                if (orangePoint == 5)
-                {
-                    Debug.Log("ORANGE HIT 5");
-                    return PickUpColours.ORANGE;
-                }
-                break;
-        }
+            switch (tag)
+            {
+                case "RedPoint":
+                    int redPoint = PlayerPrefs.GetInt("RedPickUp");
+                    redPoint++;
+                    PlayerPrefs.SetInt("RedPickUp", redPoint);
+                    if (redPoint == 5)
+                    {
+                        Debug.Log("RED HIT 5");
+                        return PickUpColours.RED;
+                    }
 
+                    break;
+                case "BluePoint":
+                    int bluePoint = PlayerPrefs.GetInt("BluePickUp");
+                    bluePoint++;
+                    PlayerPrefs.SetInt("BluePickUp", bluePoint);
+                    if (bluePoint == 5)
+                    {
+                        Debug.Log("BLUE HIT 5");
+                        return PickUpColours.BLUE;
+                    }
+                    break;
+                case "YellowPoint":
+                    int yellowPoint = PlayerPrefs.GetInt("YellowPickUp");
+                    yellowPoint++;
+                    PlayerPrefs.SetInt("YellowPickUp", yellowPoint);
+                    if (yellowPoint == 5)
+                    {
+                        Debug.Log("YELLOW HIT 5");
+                        return PickUpColours.YELLOW;
+                    }
+                    break;
+                case "GreenPoint":
+                    int greenPoint = PlayerPrefs.GetInt("GreenPickUp");
+                    greenPoint++;
+                    PlayerPrefs.SetInt("GreenPickUp", greenPoint);
+                    if (greenPoint == 5)
+                    {
+                        Debug.Log("GREEN HIT 5");
+                        return PickUpColours.GREEN;
+                    }
+                    break;
+                case "OrangePoint":
+                    int orangePoint = PlayerPrefs.GetInt("OrangePickUp");
+                    orangePoint++;
+                    PlayerPrefs.SetInt("OrangePickUp", orangePoint);
+                    if (orangePoint == 5)
+                    {
+                        Debug.Log("ORANGE HIT 5");
+                        return PickUpColours.ORANGE;
+                    }
+                    break;
+            }
+        }
+     
         return PickUpColours.NONE;
     }
 
@@ -167,28 +170,23 @@ public class PointPickUp : MonoBehaviour {
         switch (colour)
         {
             case PickUpColours.RED:
-                Ball.pickUp = true;
                 baller.gameObject.GetComponent<Renderer>().material = _RedMaterial;
                 if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _RedMaterial)
                     baller.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
                 break;
             case PickUpColours.BLUE:
-                Ball.pickUp = true;
                 baller.gameObject.GetComponent<Renderer>().material = _BlueMaterial;
                 PlayerPrefs.SetInt("SuckerPower", 1);
                 break;
             case PickUpColours.ORANGE:
-                Ball.pickUp = true;
                 baller.gameObject.GetComponent<Renderer>().material = _OrangeMaterial;
                 break;
             case PickUpColours.YELLOW:
-                Ball.pickUp = true;
                 baller.gameObject.GetComponent<Renderer>().material = _YellowMaterial;
                 if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _YellowMaterial)
                     baller.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 4);
                 break;
             case PickUpColours.GREEN:
-                Ball.pickUp = true;
                 baller.gameObject.GetComponent<Renderer>().material = _GreenMaterial;
                 break;
         }
