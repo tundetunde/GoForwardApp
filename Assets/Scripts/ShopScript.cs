@@ -133,4 +133,9 @@ public class ShopScript : MonoBehaviour {
         PlayerPrefs.SetInt("RedBalls", 1);
         PlayerPrefs.SetInt("OrangeBalls", 1);
     }
+
+    public void BackToShopMenu()
+    {
+        menu.gameObject.SetActive(false);
+    }
 }
