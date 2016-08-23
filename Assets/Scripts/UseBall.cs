@@ -5,12 +5,12 @@ using UnityEngine.UI;
 public class UseBall : MonoBehaviour {
     public enum COLOURS
     {
+        NONE,
         BLUE,
         YELLOW,
         RED,
         GREEN,
         ORANGE,
-        NONE
     }
 
     public static UseBall Instance { set; get; }

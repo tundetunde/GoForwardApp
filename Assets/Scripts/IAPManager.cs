@@ -35,10 +35,6 @@ public class IAPManager : MonoBehaviour, IStoreListener
     public static string PRODUCT_5_RED = "red5ball";
     public static string PRODUCT_10_RED = "red10ball";
 
-    public static string kProductIDConsumable = "consumable";
-    public static string kProductIDNonConsumable = "nonconsumable";
-    public static string kProductIDSubscription = "subscription";
-
     void Awake()
     {
         Instance = this;

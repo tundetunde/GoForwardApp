@@ -22,7 +22,7 @@ public class ShopScript : MonoBehaviour {
 
     void Awake()
     {
-        TestUseButtons();
+        //TestUseButtons();
         switch (colour)
         {
             case COLOURS.BLUE:

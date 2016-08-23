@@ -28,6 +28,7 @@ public class Ball : MonoBehaviour {
     public Text timeText;
 
     bool isStarted = false;
+    bool startTimer = false;
     public static bool startingPower = false;
     float timer = 0;
     float speed = 3;
@@ -35,6 +36,8 @@ public class Ball : MonoBehaviour {
     {
         if (Input.GetMouseButtonDown(0))
         {
+            if (isStarted == false)
+                startTimer = true;
             isStarted = true;
             return;
         }
@@ -87,6 +90,7 @@ public class Ball : MonoBehaviour {
                 break;
             case UseBall.COLOURS.ORANGE:
                 gameObject.GetComponent<Renderer>().material = _OrangeMaterial;
+                speed = 2;
                 int orangeBall = PlayerPrefs.GetInt("OrangeBalls");
                 orangeBall--;
                 PlayerPrefs.SetInt("OrangeBalls", orangeBall);
@@ -266,22 +270,25 @@ public class Ball : MonoBehaviour {
         {
             doublePointText.gameObject.SetActive(true);
             if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _GreenMaterial)
-                doublePointText.text = "DOUBLE SCORE";
+                doublePointText.text = "DOUBLE POINTS";
             if(baller.gameObject.GetComponent<Renderer>().sharedMaterial == _YellowMaterial)
             {
                 doublePointText.text = "SONIC SPEED";
-                speed = 4;
+                speed = 4.5f;
             }
             if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _BlueMaterial)
                 doublePointText.text = "SONIC SUCTION";
             if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _RedMaterial)
                 doublePointText.text = "ANTI-GRAVITY";
             if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _OrangeMaterial)
-                doublePointText.text = "I DUNNO YET";
+                doublePointText.text = "SLOW MOTION";
             
-            timer += Time.deltaTime;
             timeText.gameObject.SetActive(true);
-            if(startingPower)
+            
+            if(startTimer)
+                timer += Time.deltaTime;
+
+            if (startingPower)
                 timeText.text = Convert.ToString(Convert.ToInt32(60.0f - timer));
             else
                 timeText.text = Convert.ToString(Convert.ToInt32(5.0f - timer));
@@ -290,23 +297,24 @@ public class Ball : MonoBehaviour {
             {
                     
                 timeText.gameObject.SetActive(false);
+                doublePointText.gameObject.SetActive(false);
                 if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _RedMaterial)
                     baller.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _YellowMaterial)
                     speed = 3;
                 if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _BlueMaterial)
                     PlayerPrefs.SetInt("SuckerPower", 0);
-                if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _GreenMaterial)
-                    doublePointText.gameObject.SetActive(false);
+                if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _OrangeMaterial)
+                    speed = 3;
 
                 if (startingPower)
-                {
-                    startingPower = false;
-                    baller.gameObject.GetComponent<Renderer>().material = _OriginalMaterial;
-                    UseBall.colour = UseBall.COLOURS.NONE;
-                    doublePointText.gameObject.SetActive(false);
-                }
+                    {
+                        baller.gameObject.GetComponent<Renderer>().material = _OriginalMaterial;
+                        doublePointText.gameObject.SetActive(false);
+                        startingPower = false;
+                    }
 
+                UseBall.colour = UseBall.COLOURS.NONE;
                 switch (UseBall.colour)
                 {
                     case UseBall.COLOURS.BLUE:
