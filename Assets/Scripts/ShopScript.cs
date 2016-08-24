@@ -77,31 +77,31 @@ public class ShopScript : MonoBehaviour {
     private void BuyRedBalls(int amount)
     {
 
-        //IAPManager.Instance.BuyRedBalls(amount);
+        IAPManager.Instance.BuyRedBalls(amount);
         Debug.Log("Buying Red Balls");
     }
 
     private void BuyBlueBalls(int amount)
     {
-        //IAPManager.Instance.BuyBlueBalls(amount);
+        IAPManager.Instance.BuyBlueBalls(amount);
         Debug.Log("Buying Blue Balls");
     }
 
     private void BuyYellowBalls(int amount)
     {
-        //IAPManager.Instance.BuyYelllowBalls(amount);
+        IAPManager.Instance.BuyYelllowBalls(amount);
         Debug.Log("Buying Yellow Balls");
     }
 
     private void BuyOrangeBalls(int amount)
     {
-        //IAPManager.Instance.BuyOrangeBalls(amount);
+        IAPManager.Instance.BuyOrangeBalls(amount);
         Debug.Log("Buying Orange Balls");
     }
 
     private void BuyGreenBalls(int amount)
     {
-        //IAPManager.Instance.BuyGreenBalls(amount);
+        IAPManager.Instance.BuyGreenBalls(amount);
         Debug.Log("Buying Green Balls");
     }
 
