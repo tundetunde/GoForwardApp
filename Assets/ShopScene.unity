@@ -973,7 +973,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "1 Ball\n\xA31.20"
+  m_Text: "1 Ball\n\xA30.50"
 --- !u!222 &278575079
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1908,7 +1908,7 @@ RectTransform:
   m_Children:
   - {fileID: 1407351269}
   m_Father: {fileID: 1655140382}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 80, y: 55}
@@ -2213,7 +2213,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "5 Balls\n\xA34"
+  m_Text: "5 Balls\n\xA31.30"
 --- !u!222 &745777135
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2967,7 +2967,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "10 Balls\n\xA36"
+  m_Text: "10 Balls\n\xA32.50"
 --- !u!222 &1252643280
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3189,7 +3189,7 @@ RectTransform:
   m_Children:
   - {fileID: 745777133}
   m_Father: {fileID: 1655140382}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -80, y: -55}
@@ -3469,7 +3469,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "2 Balls\n\xA32"
+  m_Text: "2 Balls\n\xA30.80"
 --- !u!222 &1407351271
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4044,8 +4044,8 @@ RectTransform:
   m_Children:
   - {fileID: 1113830646}
   - {fileID: 965160410}
-  - {fileID: 1350027608}
   - {fileID: 676342931}
+  - {fileID: 1350027608}
   - {fileID: 1432695735}
   - {fileID: 145985033}
   m_Father: {fileID: 223942741}
