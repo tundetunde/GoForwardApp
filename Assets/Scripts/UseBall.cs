@@ -13,16 +13,37 @@ public class UseBall : MonoBehaviour {
         ORANGE,
     }
 
+    public Button starButtonRed, starButtonGreen, starButtonBlue;
+    public Button starButtonYellow, starButtonOrange, starButtonStandard;
     public static UseBall Instance { set; get; }
     public static COLOURS colour;
-    public Text text;
+
+    void Awake()
+    {
+        if (PlayerPrefs.GetInt("RedBalls") == 0)
+            starButtonRed.gameObject.SetActive(false);
+        if (PlayerPrefs.GetInt("BlueBalls") == 0)
+            starButtonBlue.gameObject.SetActive(false);
+        if (PlayerPrefs.GetInt("YellowBalls") == 0)
+            starButtonYellow.gameObject.SetActive(false);
+        if (PlayerPrefs.GetInt("GreenBalls") == 0)
+            starButtonGreen.gameObject.SetActive(false);
+        if (PlayerPrefs.GetInt("OrangeBalls") == 0)
+            starButtonOrange.gameObject.SetActive(false);
+
+    }
 
     public void SetBlueBall()
     {
         if(PlayerPrefs.GetInt("BlueBalls") > 0)
         {
             colour = COLOURS.BLUE;
-            text.text = "Current Ball: Blue";
+            starButtonBlue.transform.GetChild(0).GetComponent<Image>().enabled = true;
+            starButtonRed.transform.GetChild(0).GetComponent<Image>().enabled = false;
+            starButtonGreen.transform.GetChild(0).GetComponent<Image>().enabled = false;
+            starButtonYellow.transform.GetChild(0).GetComponent<Image>().enabled = false;
+            starButtonOrange.transform.GetChild(0).GetComponent<Image>().enabled = false;
+            starButtonStandard.transform.GetChild(0).GetComponent<Image>().enabled = false;
         }
     }
 
@@ -31,7 +52,12 @@ public class UseBall : MonoBehaviour {
         if(PlayerPrefs.GetInt("YellowBalls") > 0)
         {
             colour = COLOURS.YELLOW;
-            text.text = "Current Ball: Yellow";
+            starButtonYellow.transform.GetChild(0).GetComponent<Image>().enabled = true;
+            starButtonBlue.transform.GetChild(0).GetComponent<Image>().enabled = false;
+            starButtonRed.transform.GetChild(0).GetComponent<Image>().enabled = false;
+            starButtonGreen.transform.GetChild(0).GetComponent<Image>().enabled = false;
+            starButtonOrange.transform.GetChild(0).GetComponent<Image>().enabled = false;
+            starButtonStandard.transform.GetChild(0).GetComponent<Image>().enabled = false;
         }
     }
 
@@ -40,7 +66,12 @@ public class UseBall : MonoBehaviour {
         if(PlayerPrefs.GetInt("GreenBalls") > 0)
         {
             colour = COLOURS.GREEN;
-            text.text = "Current Ball: Green";
+            starButtonGreen.transform.GetChild(0).GetComponent<Image>().enabled = true;
+            starButtonYellow.transform.GetChild(0).GetComponent<Image>().enabled = false;
+            starButtonBlue.transform.GetChild(0).GetComponent<Image>().enabled = false;
+            starButtonRed.transform.GetChild(0).GetComponent<Image>().enabled = false;
+            starButtonOrange.transform.GetChild(0).GetComponent<Image>().enabled = false;
+            starButtonStandard.transform.GetChild(0).GetComponent<Image>().enabled = false;
         }
     }
 
@@ -49,7 +80,12 @@ public class UseBall : MonoBehaviour {
         if(PlayerPrefs.GetInt("OrangeBalls") > 0)
         {
             colour = COLOURS.ORANGE;
-            text.text = "Current Ball: Orange";
+            starButtonOrange.transform.GetChild(0).GetComponent<Image>().enabled = true;
+            starButtonGreen.transform.GetChild(0).GetComponent<Image>().enabled = false;
+            starButtonYellow.transform.GetChild(0).GetComponent<Image>().enabled = false;
+            starButtonBlue.transform.GetChild(0).GetComponent<Image>().enabled = false;
+            starButtonRed.transform.GetChild(0).GetComponent<Image>().enabled = false;
+            starButtonStandard.transform.GetChild(0).GetComponent<Image>().enabled = false;
         }
     }
 
@@ -58,7 +94,26 @@ public class UseBall : MonoBehaviour {
         if(PlayerPrefs.GetInt("RedBalls") > 0)
         {
             colour = COLOURS.RED;
-            text.text = "Current Ball: Red";
+            starButtonRed.transform.GetChild(0).GetComponent<Image>().enabled = true;
+            starButtonOrange.transform.GetChild(0).GetComponent<Image>().enabled = false;
+            starButtonGreen.transform.GetChild(0).GetComponent<Image>().enabled = false;
+            starButtonYellow.transform.GetChild(0).GetComponent<Image>().enabled = false;
+            starButtonBlue.transform.GetChild(0).GetComponent<Image>().enabled = false;
+            starButtonStandard.transform.GetChild(0).GetComponent<Image>().enabled = false;
+        }
+    }
+
+    public void SetStandardBall()
+    {
+        if (PlayerPrefs.GetInt("RedBalls") > 0)
+        {
+            colour = COLOURS.NONE;
+            starButtonStandard.transform.GetChild(0).GetComponent<Image>().enabled = true;
+            starButtonRed.transform.GetChild(0).GetComponent<Image>().enabled = false;
+            starButtonOrange.transform.GetChild(0).GetComponent<Image>().enabled = false;
+            starButtonGreen.transform.GetChild(0).GetComponent<Image>().enabled = false;
+            starButtonYellow.transform.GetChild(0).GetComponent<Image>().enabled = false;
+            starButtonBlue.transform.GetChild(0).GetComponent<Image>().enabled = false;
         }
     }
 

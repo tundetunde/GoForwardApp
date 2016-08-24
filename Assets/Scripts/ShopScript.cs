@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class ShopScript : MonoBehaviour {
     public GameObject menu;
     public static ShopScript Instance { set; get; }
-    public Text text;
 
     public enum COLOURS
     {
@@ -23,25 +22,6 @@ public class ShopScript : MonoBehaviour {
     void Awake()
     {
         //TestUseButtons();
-        switch (colour)
-        {
-            case COLOURS.BLUE:
-                text.text = "BLUE BALLS";
-                break;
-            case COLOURS.YELLOW:
-                text.text = "YELLOW BALLS";
-                break;
-            case COLOURS.RED:
-                text.text = "RED BALLS";
-                break;
-            case COLOURS.GREEN:
-                text.text = "GREEN BALLS";
-                break;
-            case COLOURS.ORANGE:
-                text.text = "ORANGE BALLS";
-                break;
-
-        }
     }
 
     public void BackToHome()
