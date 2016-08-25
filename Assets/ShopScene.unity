@@ -906,6 +906,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menu: {fileID: 1779204385}
+  blue: {fileID: 0}
+  red: {fileID: 0}
+  green: {fileID: 0}
+  yellow: {fileID: 0}
+  orange: {fileID: 0}
 --- !u!1 &278575076
 GameObject:
   m_ObjectHideFlags: 0
@@ -3612,6 +3617,7 @@ GameObject:
   - 114: {fileID: 1490408562}
   - 114: {fileID: 1490408561}
   - 114: {fileID: 1490408563}
+  - 114: {fileID: 1490408564}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3729,6 +3735,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menu: {fileID: 1779204385}
+  blue: {fileID: 1633548265}
+  red: {fileID: 1691595999}
+  green: {fileID: 18073955}
+  yellow: {fileID: 860932336}
+  orange: {fileID: 741330458}
 --- !u!114 &1490408563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3746,6 +3757,17 @@ MonoBehaviour:
   starButtonYellow: {fileID: 1671242498}
   starButtonOrange: {fileID: 1252790215}
   starButtonStandard: {fileID: 1992045444}
+--- !u!114 &1490408564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1490408556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81a8afa63ae768843b257252dff30ff4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1566564366
 GameObject:
   m_ObjectHideFlags: 0

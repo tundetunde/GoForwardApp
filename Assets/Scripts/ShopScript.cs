@@ -2,10 +2,12 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class ShopScript : MonoBehaviour {
     public GameObject menu;
     public static ShopScript Instance { set; get; }
+    public Text blue, red, green, yellow, orange;
 
     public enum COLOURS
     {
@@ -79,30 +81,35 @@ public class ShopScript : MonoBehaviour {
 
         IAPManager.Instance.BuyRedBalls(amount);
         Debug.Log("Buying Red Balls");
+        red.text = Convert.ToString(PlayerPrefs.GetInt("RedBalls"));
     }
 
     private void BuyBlueBalls(int amount)
     {
         IAPManager.Instance.BuyBlueBalls(amount);
         Debug.Log("Buying Blue Balls");
+        blue.text = Convert.ToString(PlayerPrefs.GetInt("BlueBalls"));
     }
 
     private void BuyYellowBalls(int amount)
     {
         IAPManager.Instance.BuyYelllowBalls(amount);
         Debug.Log("Buying Yellow Balls");
+        yellow.text = Convert.ToString(PlayerPrefs.GetInt("YellowBalls"));
     }
 
     private void BuyOrangeBalls(int amount)
     {
         IAPManager.Instance.BuyOrangeBalls(amount);
         Debug.Log("Buying Orange Balls");
+        orange.text = Convert.ToString(PlayerPrefs.GetInt("OrangeBalls"));
     }
 
     private void BuyGreenBalls(int amount)
     {
         IAPManager.Instance.BuyGreenBalls(amount);
         Debug.Log("Buying Green Balls");
+        green.text = Convert.ToString(PlayerPrefs.GetInt("GreenBalls"));
     }
 
     private void TestUseButtons()
