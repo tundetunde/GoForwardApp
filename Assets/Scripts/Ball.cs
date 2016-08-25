@@ -199,7 +199,7 @@ public class Ball : MonoBehaviour {
                 break;
         }
 
-        randonNumber = UnityEngine.Random.Range(0, 40);
+        randonNumber = UnityEngine.Random.Range(0, 30);
 
         switch (randonNumber)
         {

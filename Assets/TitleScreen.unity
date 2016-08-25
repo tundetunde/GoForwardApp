@@ -811,7 +811,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300000, guid: 60d284225bb61014aa1fd2ddd8ba4cf0, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 819a34736731da449b8a9cc2e79ae2ed, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -866,7 +866,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 7212f9328fde4264fac5ce1d6f5fdd7a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 84bca9c75a0eeb14b9919d471072e933, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

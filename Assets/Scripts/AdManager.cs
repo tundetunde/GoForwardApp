@@ -4,6 +4,7 @@ using UnityEngine;
 public class AdManager : MonoBehaviour {
     public static AdManager Instance { set; get; }
     public string videoAd;
+    BannerView bannerView;
     private void Start()
     {
         Instance = this;
@@ -23,14 +24,15 @@ public class AdManager : MonoBehaviour {
         .Build();
 
 
-        BannerView bannerView = new BannerView(adUnitId, AdSize.Banner, AdPosition.Top);
+        bannerView = new BannerView(adUnitId, AdSize.Banner, AdPosition.Bottom);
         // Load the banner with the request.
         bannerView.LoadAd(request);
+        
     }
 
     public void ShowBanner()
     {
-        
+        //bannerView.Show();
     }
 
     public void ShowVideo()

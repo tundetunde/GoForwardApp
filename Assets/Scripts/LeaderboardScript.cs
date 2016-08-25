@@ -29,7 +29,7 @@ public class LeaderboardScript : MonoBehaviour {
     public void OnShowLeaderBoard()
     {
         if(isLoggedIn())
-            //        Social.ShowLeaderboardUI (); // Show all leaderboard
+                 //   Social.ShowLeaderboardUI (); // Show all leaderboard
             ((PlayGamesPlatform)Social.Active).ShowLeaderboardUI(leaderboard); // Show current (Active) leaderboard
         else
             LogIn();

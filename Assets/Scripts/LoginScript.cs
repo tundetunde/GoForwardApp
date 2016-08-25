@@ -48,8 +48,4 @@ public class LoginScript : MonoBehaviour {
         return false;
     }
 
-    public void OnLogOut()
-    {
-        ((PlayGamesPlatform)Social.Active).SignOut();
-    }
 }
