@@ -7,7 +7,7 @@ public class RateButton : MonoBehaviour {
     {
 #if UNITY_EDITOR
 #elif UNITY_ANDROID
-            Application.OpenURL("market://play.google.com/store/apps/details?id=com.DualDigital.GoForward");
+            Application.OpenURL("http://play.google.com/store/apps/details?id=com.DualDigital.GoForward");
 #elif UNITY_IOS
             Application.OpenURL("market://details?id=YOUR_ID");
 #endif
@@ -26,8 +26,8 @@ public class RateButton : MonoBehaviour {
         intentObject.Call<AndroidJavaObject>("setAction", intentClass.GetStatic<string>("ACTION_SEND"));
         //set the type of sharing that is happening
         intentObject.Call<AndroidJavaObject>("setType", "text/plain");
-
-        intentObject.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("ACTION_SEND"), caption);
+        intentObject.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_TITLE"), "GO SPACE BALL");
+        intentObject.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_TEXT"), caption);
         //get the current activity
         AndroidJavaClass unity = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
         AndroidJavaObject currentActivity = unity.GetStatic<AndroidJavaObject>("currentActivity");
