@@ -5,6 +5,7 @@ public class AdManager : MonoBehaviour {
     public static AdManager Instance { set; get; }
     public string videoAd;
     BannerView bannerView;
+    InterstitialAd fullScreenAd;
     private void Start()
     {
         Instance = this;
@@ -12,8 +13,10 @@ public class AdManager : MonoBehaviour {
 
 #if UNITY_ANDROID
         string adUnitId = "ca-app-pub-6044705985167929/9665428898";
+        string InterstitiaId = "ca-app-pub-6044705985167929/2142162092";
 #elif UNITY_IPHONE
         string adUnitId = "ca-app-pub-6044705985167929/9665428898";
+        string InterstitiaId = "ca-app-pub-6044705985167929/2142162092";
 #else
         string adUnitId = "unexpected_platform";
 #endif
@@ -24,20 +27,28 @@ public class AdManager : MonoBehaviour {
         .Build();
 
 
-        bannerView = new BannerView(adUnitId, AdSize.Banner, AdPosition.Bottom);
+        bannerView = new BannerView(adUnitId, AdSize.Banner, AdPosition.TopLeft);
+        fullScreenAd = new InterstitialAd(InterstitiaId);
         // Load the banner with the request.
         bannerView.LoadAd(request);
+        fullScreenAd.LoadAd(request);
         
     }
 
     public void ShowBanner()
     {
-        //bannerView.Show();
+        bannerView.Show();
     }
 
-    public void ShowVideo()
+    public void ShowFullScreenAds()
     {
-       
+        int fullAds = PlayerPrefs.GetInt("FullScreenAds", 1);
+        PlayerPrefs.SetInt("FullScreenAds", ++fullAds);
+        if (fullAds >= 5)
+        {
+            PlayerPrefs.SetInt("FullScreenAds", 0);
+            fullScreenAd.Show();
+        }
 
     }
 }

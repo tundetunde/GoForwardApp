@@ -6,11 +6,13 @@ public class LoadOnClick : MonoBehaviour {
 
     void Start()
     {
-        // AdManager.Instance.ShowBanner();
+         //AdManager.Instance.ShowBanner();
+         //AdManager.Instance.ShowFullScreenAds();
     }
 
 	public void LoadScene(int level)
     {
+        PlayerPrefs.SetInt("FullScreenAds", 1);
         PlayerPrefs.SetInt("Score", 0);
         PlayerPrefs.SetInt("BluePickUp", 0);
         PlayerPrefs.SetInt("RedPickUp", 0);
