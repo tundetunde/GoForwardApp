@@ -113,7 +113,7 @@ public class Ball : MonoBehaviour {
             SpawnStartingPlatform();
         }
 
-        for (int index = 0; index < 200; index++)
+        for (int index = 0; index < 2000; index++)
         {
             SpawnPlatform();
         }
