@@ -113,7 +113,7 @@ public class Ball : MonoBehaviour {
             SpawnStartingPlatform();
         }
 
-        for (int index = 0; index < 2000; index++)
+        for (int index = 0; index < 600; index++)
         {
             SpawnPlatform();
         }
@@ -135,7 +135,7 @@ public class Ball : MonoBehaviour {
     {
         _lastPlatform = Instantiate(_platform, new Vector3(_lastPlatform.transform.position.x,
         _lastPlatform.transform.position.y,
-        _lastPlatform.transform.position.z + 1),
+        _lastPlatform.transform.position.z + 1.5f),
         Quaternion.identity) as GameObject;
     }
 
