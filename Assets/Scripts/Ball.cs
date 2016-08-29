@@ -299,12 +299,12 @@ public class Ball : MonoBehaviour {
                     
                 timeText.gameObject.SetActive(false);
                 doublePointText.gameObject.SetActive(false);
+                if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _BlueMaterial)
+                    PlayerPrefs.SetInt("SuckerPower", 0);
                 if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _RedMaterial)
                     baller.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _YellowMaterial)
                     speed = 3;
-                if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _BlueMaterial)
-                    PlayerPrefs.SetInt("SuckerPower", 0);
                 if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _OrangeMaterial)
                     speed = 3;
 
