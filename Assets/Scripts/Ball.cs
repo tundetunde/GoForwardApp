@@ -236,6 +236,7 @@ public class Ball : MonoBehaviour {
             // Because there is no other thing except platform to collide so I'm not checking that on which our Ball collided.
             // Spawning new platform on leaving current platform
             SpawnPlatform();
+            SpawnPlatform();
             // Assigning platform's Gameobject to a variable "platform"
             GameObject platform = other.gameObject;
             // Turning off "isKinematic" attribute of platform, that will make platform falling down.
