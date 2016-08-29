@@ -292,9 +292,9 @@ public class Ball : MonoBehaviour {
             if (startingPower)
                 timeText.text = Convert.ToString(Convert.ToInt32(60.0f - timer));
             else
-                timeText.text = Convert.ToString(Convert.ToInt32(5.0f - timer));
+                timeText.text = Convert.ToString(Convert.ToInt32(15.0f - timer));
              
-            if ((startingPower && timer > 60) || (!startingPower && timer > 5))
+            if ((startingPower && timer > 60) || (!startingPower && timer > 15))
             {
                     
                 timeText.gameObject.SetActive(false);

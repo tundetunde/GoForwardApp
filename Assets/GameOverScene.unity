@@ -1124,7 +1124,8 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Download GO SPACE BALL... This game is too fun
+          m_StringArgument: Check out Go Space Ball. It is pretty cool and challenging.
+            Check it out on Google Play Store. See If you can beat my score. http://play.google.com/store/apps/details?id=com.DualDigital.GoForward
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
