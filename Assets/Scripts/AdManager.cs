@@ -44,7 +44,7 @@ public class AdManager : MonoBehaviour {
     {
         int fullAds = PlayerPrefs.GetInt("FullScreenAds", 1);
         PlayerPrefs.SetInt("FullScreenAds", ++fullAds);
-        if (fullAds >= 5)
+        if (fullAds >= 3)
         {
             PlayerPrefs.SetInt("FullScreenAds", 0);
             fullScreenAd.Show();
