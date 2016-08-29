@@ -181,12 +181,12 @@ public class PointPickUp : MonoBehaviour {
             case PickUpColours.ORANGE:
                 baller.gameObject.GetComponent<Renderer>().material = _OrangeMaterial;
                 if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _YellowMaterial)
-                    baller.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 2);
+                    baller.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 1.5f);
                 break;
             case PickUpColours.YELLOW:
                 baller.gameObject.GetComponent<Renderer>().material = _YellowMaterial;
                 if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _YellowMaterial)
-                    baller.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 4);
+                    baller.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 6);
                 break;
             case PickUpColours.GREEN:
                 baller.gameObject.GetComponent<Renderer>().material = _GreenMaterial;

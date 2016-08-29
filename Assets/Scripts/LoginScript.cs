@@ -43,7 +43,7 @@ public class LoginScript : MonoBehaviour {
 
     bool isLoggedIn()
     {
-        if (PlayGamesPlatform.Instance.IsAuthenticated())
+        if (PlayGamesPlatform.Instance.localUser.authenticated)
             return true;
         return false;
     }

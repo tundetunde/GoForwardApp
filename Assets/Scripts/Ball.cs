@@ -67,7 +67,7 @@ public class Ball : MonoBehaviour {
                 break;
             case UseBall.COLOURS.YELLOW:
                 gameObject.GetComponent<Renderer>().material = _YellowMaterial;
-                speed = 4;
+                speed = 6;
                 int yellowBall = PlayerPrefs.GetInt("YellowBalls");
                 yellowBall--;
                 PlayerPrefs.SetInt("YellowBalls", yellowBall);
@@ -90,7 +90,7 @@ public class Ball : MonoBehaviour {
                 break;
             case UseBall.COLOURS.ORANGE:
                 gameObject.GetComponent<Renderer>().material = _OrangeMaterial;
-                speed = 2;
+                speed = 1.5f;
                 int orangeBall = PlayerPrefs.GetInt("OrangeBalls");
                 orangeBall--;
                 PlayerPrefs.SetInt("OrangeBalls", orangeBall);
@@ -257,7 +257,7 @@ public class Ball : MonoBehaviour {
         //yield return new WaitForSeconds(1.5f);
         //platform.GetComponent<Rigidbody>().isKinematic = false;
         //Waiting for 1 second to execute next line(s) of code.
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(6.5f);
         // Destroying platform
         Destroy(platform);
     }
