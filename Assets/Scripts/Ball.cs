@@ -30,8 +30,9 @@ public class Ball : MonoBehaviour {
     bool isStarted = false;
     bool startTimer = false;
     public static bool startingPower = false;
+	public static bool powerUp = false; //Checks if a power up is currently in use
     float timer = 0;
-    float speed = 3;
+    float speed = 4;
     void OnTap()
     {
         if (Input.GetMouseButtonDown(0))
@@ -90,7 +91,7 @@ public class Ball : MonoBehaviour {
                 break;
             case UseBall.COLOURS.ORANGE:
                 gameObject.GetComponent<Renderer>().material = _OrangeMaterial;
-                speed = 1.5f;
+                speed = 2;
                 int orangeBall = PlayerPrefs.GetInt("OrangeBalls");
                 orangeBall--;
                 PlayerPrefs.SetInt("OrangeBalls", orangeBall);
@@ -113,7 +114,7 @@ public class Ball : MonoBehaviour {
             SpawnStartingPlatform();
         }
 
-        for (int index = 0; index < 600; index++)
+        for (int index = 0; index < 400; index++)
         {
             SpawnPlatform();
         }
@@ -236,7 +237,7 @@ public class Ball : MonoBehaviour {
             // Because there is no other thing except platform to collide so I'm not checking that on which our Ball collided.
             // Spawning new platform on leaving current platform
             SpawnPlatform();
-            SpawnPlatform();
+            //SpawnPlatform();
             // Assigning platform's Gameobject to a variable "platform"
             GameObject platform = other.gameObject;
             // Turning off "isKinematic" attribute of platform, that will make platform falling down.
@@ -257,7 +258,7 @@ public class Ball : MonoBehaviour {
         //yield return new WaitForSeconds(1.5f);
         //platform.GetComponent<Rigidbody>().isKinematic = false;
         //Waiting for 1 second to execute next line(s) of code.
-        yield return new WaitForSeconds(6.5f);
+        yield return new WaitForSeconds(3.5f);
         // Destroying platform
         Destroy(platform);
     }
@@ -269,20 +270,24 @@ public class Ball : MonoBehaviour {
             || baller.gameObject.GetComponent<Renderer>().sharedMaterial == _GreenMaterial || baller.gameObject.GetComponent<Renderer>().sharedMaterial == _YellowMaterial
                 || baller.gameObject.GetComponent<Renderer>().sharedMaterial == _OrangeMaterial)
         {
+			powerUp = true;
             doublePointText.gameObject.SetActive(true);
             if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _GreenMaterial)
                 doublePointText.text = "DOUBLE POINTS";
             if(baller.gameObject.GetComponent<Renderer>().sharedMaterial == _YellowMaterial)
             {
                 doublePointText.text = "SONIC SPEED";
-                speed = 4.5f;
+                speed = 6f;
             }
             if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _BlueMaterial)
                 doublePointText.text = "SONIC SUCTION";
             if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _RedMaterial)
                 doublePointText.text = "ANTI-GRAVITY";
-            if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _OrangeMaterial)
-                doublePointText.text = "SLOW MOTION";
+			if (baller.gameObject.GetComponent<Renderer> ().sharedMaterial == _OrangeMaterial) {
+				doublePointText.text = "SLOW MOTION";
+				speed = 2f;
+			}
+                
             
             timeText.gameObject.SetActive(true);
             
@@ -296,7 +301,7 @@ public class Ball : MonoBehaviour {
              
             if ((startingPower && timer > 60) || (!startingPower && timer > 15))
             {
-                    
+				powerUp = false;
                 timeText.gameObject.SetActive(false);
                 doublePointText.gameObject.SetActive(false);
                 if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _BlueMaterial)
@@ -304,9 +309,9 @@ public class Ball : MonoBehaviour {
                 if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _RedMaterial)
                     baller.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _YellowMaterial)
-                    speed = 3;
+                    speed = 4;
                 if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _OrangeMaterial)
-                    speed = 3;
+                    speed = 4;
 
                 if (startingPower)
                     {
@@ -315,31 +320,13 @@ public class Ball : MonoBehaviour {
                         startingPower = false;
                     }
 
+				baller.gameObject.GetComponent<Renderer>().material = _OriginalMaterial;
                 UseBall.colour = UseBall.COLOURS.NONE;
-                switch (UseBall.colour)
-                {
-                    case UseBall.COLOURS.BLUE:
-                        baller.gameObject.GetComponent<Renderer>().material = _BlueMaterial;
-                        PlayerPrefs.SetInt("SuckerPower", 1);
-                        break;
-                    case UseBall.COLOURS.YELLOW:
-                        baller.gameObject.GetComponent<Renderer>().material = _YellowMaterial;
-                        speed = 4;
-                        break;
-                    case UseBall.COLOURS.RED:
-                        baller.gameObject.GetComponent<Renderer>().material = _RedMaterial;
-                        gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
-                        break;
-                    case UseBall.COLOURS.GREEN:
-                        baller.gameObject.GetComponent<Renderer>().material = _GreenMaterial;
-                        break;
-                    case UseBall.COLOURS.ORANGE:
-                        baller.gameObject.GetComponent<Renderer>().material = _OrangeMaterial;
-                        break;
-                    default:
-                        baller.gameObject.GetComponent<Renderer>().material = _OriginalMaterial;
-                        break;
-                }
+				PlayerPrefs.SetInt("RedPickUp", 0);
+				PlayerPrefs.SetInt("BluePickUp", 0);
+				PlayerPrefs.SetInt("OrangePickUp", 0);
+				PlayerPrefs.SetInt("YellowPickUp", 0);
+				PlayerPrefs.SetInt("GreenPickUp", 0);
                 timer = 0;
             }
         }

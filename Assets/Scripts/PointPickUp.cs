@@ -94,55 +94,49 @@ public class PointPickUp : MonoBehaviour {
             switch (tag)
             {
                 case "RedPoint":
-                    int redPoint = PlayerPrefs.GetInt("RedPickUp");
-                    redPoint++;
-                    PlayerPrefs.SetInt("RedPickUp", redPoint);
-                    if (redPoint == 5)
-                    {
-                        Debug.Log("RED HIT 5");
-                        return PickUpColours.RED;
-                    }
-
+					if(Ball.powerUp == false){
+						int redPoint = PlayerPrefs.GetInt("RedPickUp");
+						redPoint++;
+						PlayerPrefs.SetInt("RedPickUp", redPoint);
+						if (redPoint == 5)
+							return PickUpColours.RED;
+					}
                     break;
-                case "BluePoint":
-                    int bluePoint = PlayerPrefs.GetInt("BluePickUp");
-                    bluePoint++;
-                    PlayerPrefs.SetInt("BluePickUp", bluePoint);
-                    if (bluePoint == 5)
-                    {
-                        Debug.Log("BLUE HIT 5");
-                        return PickUpColours.BLUE;
-                    }
+				case "BluePoint":
+					if (Ball.powerUp == false) {
+						int bluePoint = PlayerPrefs.GetInt("BluePickUp");
+						bluePoint++;
+						PlayerPrefs.SetInt("BluePickUp", bluePoint);
+						if (bluePoint == 5)
+							return PickUpColours.BLUE;
+					}
                     break;
-                case "YellowPoint":
-                    int yellowPoint = PlayerPrefs.GetInt("YellowPickUp");
-                    yellowPoint++;
-                    PlayerPrefs.SetInt("YellowPickUp", yellowPoint);
-                    if (yellowPoint == 5)
-                    {
-                        Debug.Log("YELLOW HIT 5");
-                        return PickUpColours.YELLOW;
-                    }
+			case "YellowPoint":
+					if (Ball.powerUp == false) {
+						int yellowPoint = PlayerPrefs.GetInt("YellowPickUp");
+						yellowPoint++;
+						PlayerPrefs.SetInt("YellowPickUp", yellowPoint);
+						if (yellowPoint == 5)
+							return PickUpColours.YELLOW;
+					}  
                     break;
-                case "GreenPoint":
-                    int greenPoint = PlayerPrefs.GetInt("GreenPickUp");
-                    greenPoint++;
-                    PlayerPrefs.SetInt("GreenPickUp", greenPoint);
-                    if (greenPoint == 5)
-                    {
-                        Debug.Log("GREEN HIT 5");
-                        return PickUpColours.GREEN;
-                    }
+			case "GreenPoint":
+					if (Ball.powerUp == false) {
+						int greenPoint = PlayerPrefs.GetInt("GreenPickUp");
+						greenPoint++;
+						PlayerPrefs.SetInt("GreenPickUp", greenPoint);
+						if (greenPoint == 5)
+							return PickUpColours.GREEN;
+					}
                     break;
-                case "OrangePoint":
-                    int orangePoint = PlayerPrefs.GetInt("OrangePickUp");
-                    orangePoint++;
-                    PlayerPrefs.SetInt("OrangePickUp", orangePoint);
-                    if (orangePoint == 5)
-                    {
-                        Debug.Log("ORANGE HIT 5");
-                        return PickUpColours.ORANGE;
-                    }
+			case "OrangePoint":
+					if (Ball.powerUp == false) {
+						int orangePoint = PlayerPrefs.GetInt("OrangePickUp");
+						orangePoint++;
+						PlayerPrefs.SetInt("OrangePickUp", orangePoint);
+						if (orangePoint == 5)
+							return PickUpColours.ORANGE;
+					}
                     break;
             }
         }
@@ -181,12 +175,12 @@ public class PointPickUp : MonoBehaviour {
             case PickUpColours.ORANGE:
                 baller.gameObject.GetComponent<Renderer>().material = _OrangeMaterial;
                 if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _YellowMaterial)
-                    baller.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 1.5f);
+                    baller.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 2);
                 break;
             case PickUpColours.YELLOW:
                 baller.gameObject.GetComponent<Renderer>().material = _YellowMaterial;
                 if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _YellowMaterial)
-                    baller.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 6);
+                    baller.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 4);
                 break;
             case PickUpColours.GREEN:
                 baller.gameObject.GetComponent<Renderer>().material = _GreenMaterial;
