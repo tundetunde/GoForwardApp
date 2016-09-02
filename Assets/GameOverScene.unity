@@ -223,6 +223,7 @@ MonoBehaviour:
   img: {fileID: 420719721}
   mute: {fileID: 21300000, guid: 2f9421010c0d43846a01b18e2300656e, type: 3}
   unmute: {fileID: 21300000, guid: 6d1b75f5f0d8ca94890e21f82720f2c2, type: 3}
+  musicOn: {fileID: 21300000, guid: df98091525d1ecb48b28fa69b87f5fb6, type: 3}
 --- !u!114 &420719720
 MonoBehaviour:
   m_ObjectHideFlags: 0

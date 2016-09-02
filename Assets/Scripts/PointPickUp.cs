@@ -75,7 +75,7 @@ public class PointPickUp : MonoBehaviour {
         {
             AddPoint();
             transform.position = Vector3.one * 9999999f;
-            if(PlayerPrefs.GetInt("Sound") == 1)
+            if(PlayerPrefs.GetInt("Sound") >= 1)
                 soundSource.PlayOneShot(collectPoints, 1f);
 
             PickUpColours selectedColour = AddPickUpPoint(gameObject.tag);
