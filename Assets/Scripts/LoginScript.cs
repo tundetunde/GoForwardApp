@@ -8,44 +8,72 @@ public class LoginScript : MonoBehaviour {
     public Sprite login, leaderboard;
     public string leaderboardString;
 
+
     void Awake()
-    {
-        if (isLoggedIn())
-            img.sprite = leaderboard;
-        else
-            img.sprite = login;
+	{		
+		PlayGamesPlatform.Instance.Authenticate(SignInCallback, true);
     }
 
-    public void LogIn()
-    {
-        if (isLoggedIn())
-        {
-            ((PlayGamesPlatform)Social.Active).ShowLeaderboardUI(leaderboardString);
-        }
-        else
-        {
-            Social.localUser.Authenticate((bool success) =>
-            {
-                if (success)
-                {
-                    Debug.Log("Login Sucess");
-                    img.sprite = leaderboard;
-                }
-                else
-                {
-                    Debug.Log("Login failed");
-                }
-            });
+	void Update()
+	{		
+		if (isLoggedIn())
+			img.sprite = leaderboard;
+		else
+			img.sprite = login;
+	}
 
-        }
+    public void LogIn()
+    {    
+		if (!PlayGamesPlatform.Instance.localUser.authenticated) {
+			PlayGamesPlatform.Instance.Authenticate (SignInCallback, false);
+		} else {
+			((PlayGamesPlatform)Social.Active).ShowLeaderboardUI(leaderboardString);
+		}
         
     }
 
+	public void SignInCallback(bool success) {
+		if (success) {
+			Debug.Log("Login Sucess");
+			//			
+			if (isLoggedIn())
+				img.sprite = leaderboard;
+			else
+				img.sprite = login;
+			
+//			PlayGamesPlatform.Instance.LoadScores(
+//				leaderboardString,
+//	            (data) => {
+//					
+//	            Debug.Log (data.Valid);
+//
+//	            int gscore = data.PlayerScore.formattedValue;
+//
+//				if(gscore!=null){
+//					if (gscore > PlayerPrefs.GetInt("HighScore"))
+//					{
+//							PlayerPrefs.SetInt("HighScore", data.gscore);
+//					}
+//					else{
+//						PlayGamesPlatform.Instance.ReportScore(PlayerPrefs.GetInt("HighScore"),leaderboardString,
+//							(bool sucess) =>
+//							{
+//								Debug.Log("Leaderboard updated: " + sucess);
+//							});
+//					}
+//				}
+//			});
+			}
+			else {
+				Debug.Log("Login failed");
+			}
+	}
+
     bool isLoggedIn()
     {
-        if (PlayGamesPlatform.Instance.localUser.authenticated)
-            return true;
-        return false;
+		if (PlayGamesPlatform.Instance.localUser.authenticated)
+			return true;
+		return false;
     }
 
 }

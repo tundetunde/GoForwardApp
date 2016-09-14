@@ -1,7 +1,8 @@
-﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
+﻿using System.Collections;
 using GooglePlayGames;
+using GooglePlayGames.BasicApi;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreEndGame : MonoBehaviour {
 
@@ -31,28 +32,23 @@ public class ScoreEndGame : MonoBehaviour {
     }
 
     bool isLoggedIn()
-    {
-        if (PlayGamesPlatform.Instance.IsAuthenticated())
-            return true;
-        return false;
+	{
+		if (PlayGamesPlatform.Instance.localUser.authenticated)
+			return true;
+		return false;
     }
 
     public void OnAddScoreToLeaderBorad()
     {
-        if (Social.localUser.authenticated)
-        {
-            Social.ReportScore(score, leaderboard, (bool success) =>
-            {
-                if (success)
-                {
-                    Debug.Log("Update Score Success");
-
-                }
-                else
-                {
-                    Debug.Log("Update Score Fail");
-                }
-            });
-        }
+		// Submit leaderboard scores, if authenticated
+		if (PlayGamesPlatform.Instance.localUser.authenticated)
+		{
+			// Note: make sure to add 'using GooglePlayGames'
+			PlayGamesPlatform.Instance.ReportScore(score,leaderboard,
+				(bool success) =>
+				{
+					Debug.Log("Leaderboard updated: " + success);
+				});
+		}
     }
 }

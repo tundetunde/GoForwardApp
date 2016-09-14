@@ -583,6 +583,7 @@ GameObject:
   - 222: {fileID: 1331022855}
   - 114: {fileID: 1331022854}
   - 114: {fileID: 1331022853}
+  - 114: {fileID: 1331022852}
   m_Layer: 5
   m_Name: Leaderboard Button
   m_TagString: Untagged
@@ -608,6 +609,21 @@ RectTransform:
   m_AnchoredPosition: {x: -71, y: 48}
   m_SizeDelta: {x: 100, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1331022852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1331022850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a19dd53b76ff2fc4892ba018512e812a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  img: {fileID: 1331022854}
+  login: {fileID: 21300000, guid: 84bca9c75a0eeb14b9919d471072e933, type: 3}
+  leaderboard: {fileID: 21300000, guid: 7212f9328fde4264fac5ce1d6f5fdd7a, type: 3}
+  leaderboardString: CgkIipGWqvsOEAIQAA
 --- !u!114 &1331022853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -627,15 +643,15 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 2
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
-    m_HighlightedColor: {r: 0.84169555, g: 0.037629742, b: 0.85294116, a: 0}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 0.497}
+    m_PressedColor: {r: 0.34117648, g: 0.49803922, b: 0.9529412, a: 0.497}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300000, guid: 60d284225bb61014aa1fd2ddd8ba4cf0, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 3a837cc599817ca44881b1b27b0c00bf, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -647,8 +663,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1490408563}
-        m_MethodName: OnShowLeaderBoard
+      - m_Target: {fileID: 1331022852}
+        m_MethodName: LogIn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -679,7 +695,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 7212f9328fde4264fac5ce1d6f5fdd7a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 84bca9c75a0eeb14b9919d471072e933, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
