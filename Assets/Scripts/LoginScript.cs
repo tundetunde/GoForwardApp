@@ -2,6 +2,8 @@
 using System.Collections;
 using UnityEngine.UI;
 using GooglePlayGames;
+using GooglePlayGames.BasicApi;
+using UnityEngine.SocialPlatforms;
 
 public class LoginScript : MonoBehaviour {
     public Image img;
@@ -35,38 +37,41 @@ public class LoginScript : MonoBehaviour {
 	public void SignInCallback(bool success) {
 		if (success) {
 			Debug.Log("Login Sucess");
-			//			
-			if (isLoggedIn())
+			if (isLoggedIn ()) {
 				img.sprite = leaderboard;
-			else
+				UpdateScoreOnDevice();
+			} else {
 				img.sprite = login;
-			
-//			PlayGamesPlatform.Instance.LoadScores(
-//				leaderboardString,
-//	            (data) => {
-//					
-//	            Debug.Log (data.Valid);
-//
-//	            int gscore = data.PlayerScore.formattedValue;
-//
-//				if(gscore!=null){
-//					if (gscore > PlayerPrefs.GetInt("HighScore"))
-//					{
-//							PlayerPrefs.SetInt("HighScore", data.gscore);
-//					}
-//					else{
-//						PlayGamesPlatform.Instance.ReportScore(PlayerPrefs.GetInt("HighScore"),leaderboardString,
-//							(bool sucess) =>
-//							{
-//								Debug.Log("Leaderboard updated: " + sucess);
-//							});
-//					}
-//				}
-//			});
+			}			
 			}
-			else {
+		else {
+			UpdateScoreOnDevice();
 				Debug.Log("Login failed");
 			}
+	}
+
+	void UpdateScoreOnDevice(){
+		PlayGamesPlatform.Instance.LoadScores(
+						leaderboardString, LeaderboardStart.PlayerCentered,1, LeaderboardCollection.Public, LeaderboardTimeSpan.AllTime,
+		(LeaderboardScoreData data) => {
+            Debug.Log (data.Valid);
+			int gscore = (int)data.PlayerScore.value;
+			int pscore = PlayerPrefs.GetInt("HighScore");//device score
+			if(data.Valid){
+				if(gscore!=null){
+						if (gscore > pscore)
+					{
+							PlayerPrefs.SetInt("HighScore", gscore);
+					}
+					else{
+						PlayGamesPlatform.Instance.ReportScore(pscore,leaderboardString,
+						(bool sucess) =>
+						{
+							Debug.Log("Leaderboard updated: " + sucess);
+						});
+					}
+			}}
+		});
 	}
 
     bool isLoggedIn()
