@@ -32,7 +32,7 @@ public class Ball : MonoBehaviour {
     public static bool startingPower = false;
 	public static bool powerUp = false; //Checks if a power up is currently in use
     float timer = 0;
-    float speed = 4;
+    public static float speed = 4;
     void OnTap()
     {
         if (Input.GetMouseButtonDown(0))
@@ -54,6 +54,8 @@ public class Ball : MonoBehaviour {
 
     void Awake()
     {
+		SwipeScript.speedUpVal = 0;
+		speed = 4;
         doublePointText.gameObject.SetActive(false);
         timeText.gameObject.SetActive(false);
         switch (UseBall.colour)
@@ -68,7 +70,7 @@ public class Ball : MonoBehaviour {
                 break;
             case UseBall.COLOURS.YELLOW:
                 gameObject.GetComponent<Renderer>().material = _YellowMaterial;
-                speed = 6;
+				SwipeScript.IncreaseSpeed();
                 int yellowBall = PlayerPrefs.GetInt("YellowBalls");
                 yellowBall--;
                 PlayerPrefs.SetInt("YellowBalls", yellowBall);
@@ -89,9 +91,9 @@ public class Ball : MonoBehaviour {
                 PlayerPrefs.SetInt("GreenBalls", greenBall);
                 startingPower = true;
                 break;
-            case UseBall.COLOURS.ORANGE:
-                gameObject.GetComponent<Renderer>().material = _OrangeMaterial;
-                speed = 2;
+		case UseBall.COLOURS.ORANGE:
+				gameObject.GetComponent<Renderer> ().material = _OrangeMaterial;
+				SwipeScript.DecreaseSpeed();
                 int orangeBall = PlayerPrefs.GetInt("OrangeBalls");
                 orangeBall--;
                 PlayerPrefs.SetInt("OrangeBalls", orangeBall);
@@ -277,7 +279,7 @@ public class Ball : MonoBehaviour {
             if(baller.gameObject.GetComponent<Renderer>().sharedMaterial == _YellowMaterial)
             {
                 doublePointText.text = "SONIC SPEED";
-                speed = 6f;
+				SwipeScript.IncreaseSpeed();
             }
             if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _BlueMaterial)
                 doublePointText.text = "SONIC SUCTION";
@@ -285,7 +287,7 @@ public class Ball : MonoBehaviour {
                 doublePointText.text = "ANTI-GRAVITY";
 			if (baller.gameObject.GetComponent<Renderer> ().sharedMaterial == _OrangeMaterial) {
 				doublePointText.text = "SLOW MOTION";
-				speed = 2f;
+				SwipeScript.DecreaseSpeed();
 			}
                 
             
@@ -309,9 +311,9 @@ public class Ball : MonoBehaviour {
                 if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _RedMaterial)
                     baller.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _YellowMaterial)
-                    speed = 4;
+					SwipeScript.speed -= 2;
                 if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _OrangeMaterial)
-                    speed = 4;
+					SwipeScript.speed += 2;
 
                 if (startingPower)
                     {

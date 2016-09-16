@@ -67,6 +67,11 @@ public class PointPickUp : MonoBehaviour {
         }
         
         PlayerPrefs.SetInt("Score", (int)score);
+		if (score % 40 == 0) {
+			SwipeScript.speed += 0.5f;
+			SwipeScript.speedUpVal++;
+		}
+			
     }
 
     void OnTriggerEnter(Collider other)

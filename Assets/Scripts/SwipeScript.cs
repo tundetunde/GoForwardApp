@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SwipeScript : MonoBehaviour {
 
-    float speed = 3;
+	public static float speed = 3;
     Rigidbody rb;
     private float fingerStartTime = 0.0f;
     private Vector2 fingerStartPos = Vector2.zero;
@@ -12,6 +12,7 @@ public class SwipeScript : MonoBehaviour {
     private float maxSwipeTime = 0.5f;
     float ButtonCooler = 0.5f ; // Half a second before reset
     float ButtonCount = 0;
+	public static int speedUpVal = 0;
 
 
     // Update is called once per frame
@@ -123,4 +124,58 @@ public class SwipeScript : MonoBehaviour {
     {
         rb = GetComponent<Rigidbody>();
     }
+
+	public static void IncreaseSpeed()
+	{
+		switch (speedUpVal) {
+		case 0:
+			speed = 5.0f;
+			break;
+		case 1:
+			speed = 5.5f;
+			break;
+		case 2:
+			speed = 6.0f;
+			break;
+		case 3:
+			speed = 6.5f;
+			break;
+		case 4:
+			speed = 7.0f;
+			break;
+		case 5:
+			speed = 7.5f;
+			break;
+		case 6:
+			speed = 8.0f;
+			break;
+		}
+	}
+
+	public static void DecreaseSpeed()
+	{
+		switch (speedUpVal) {
+		case 0:
+			speed = 1.5f;
+			break;
+		case 1:
+			speed = 2.0f;
+			break;
+		case 2:
+			speed = 2.5f;
+			break;
+		case 3:
+			speed = 3.0f;
+			break;
+		case 4:
+			speed = 3.5f;
+			break;
+		case 5:
+			speed = 4.0f;
+			break;
+		case 6:
+			speed = 4.5f;
+			break;
+		}
+	}
 }
