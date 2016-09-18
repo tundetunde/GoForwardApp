@@ -67,7 +67,7 @@ public class PointPickUp : MonoBehaviour {
         }
         
         PlayerPrefs.SetInt("Score", (int)score);
-		if (score % 40 == 0) {
+		if (score % 50 == 0) {
 			SwipeScript.speed += 0.5f;
 			SwipeScript.speedUpVal++;
 		}

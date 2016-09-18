@@ -260,7 +260,7 @@ public class Ball : MonoBehaviour {
         //yield return new WaitForSeconds(1.5f);
         //platform.GetComponent<Rigidbody>().isKinematic = false;
         //Waiting for 1 second to execute next line(s) of code.
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(7f);
         // Destroying platform
         Destroy(platform);
     }
