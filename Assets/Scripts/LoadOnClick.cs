@@ -6,8 +6,8 @@ public class LoadOnClick : MonoBehaviour {
 
     void Start()
     {
-         //AdManager.Instance.ShowBanner();
-         //AdManager.Instance.ShowFullScreenAds();
+         AdManager.Instance.ShowBanner();
+         AdManager.Instance.ShowFullScreenAds();
     }
 
 	public void LoadScene(int level)

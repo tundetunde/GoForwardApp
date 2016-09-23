@@ -268,6 +268,7 @@ public class Ball : MonoBehaviour {
     void DoubleTimeMaterial()
     {
         GameObject baller = GameObject.Find("Ball");
+        //GameObject baller = GameObject.Find("Pokeball");
         if (baller.gameObject.GetComponent<Renderer>().sharedMaterial == _BlueMaterial || baller.gameObject.GetComponent<Renderer>().sharedMaterial == _RedMaterial
             || baller.gameObject.GetComponent<Renderer>().sharedMaterial == _GreenMaterial || baller.gameObject.GetComponent<Renderer>().sharedMaterial == _YellowMaterial
                 || baller.gameObject.GetComponent<Renderer>().sharedMaterial == _OrangeMaterial)
