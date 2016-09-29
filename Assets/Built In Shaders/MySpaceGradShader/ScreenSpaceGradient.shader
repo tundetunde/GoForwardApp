@@ -5,7 +5,7 @@ Properties {
 	_MainTex ("Base (RGB)", 2D) = "white" {}
 }
 SubShader {
-	Tags { "RenderType"="Opaque" }
+	Tags { "Queue" = "Background" }
 	LOD 200
 
 CGPROGRAM

@@ -11,7 +11,7 @@ public class GameOverScript : MonoBehaviour {
 
     public void LoadScene(int level)
     {
-        AdManager.Instance.ShowFullScreenAds();
+        //AdManager.Instance.ShowFullScreenAds();
         PlayerPrefs.SetInt("Score", 0);
         PlayerPrefs.SetInt("BluePickUp", 0);
         PlayerPrefs.SetInt("RedPickUp", 0);

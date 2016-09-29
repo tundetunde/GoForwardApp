@@ -6,8 +6,8 @@ public class LoadOnClick : MonoBehaviour {
 
     void Start()
     {
-         AdManager.Instance.ShowBanner();
-         AdManager.Instance.ShowFullScreenAds();
+         //AdManager.Instance.ShowBanner();
+         //AdManager.Instance.ShowFullScreenAds();
     }
 
 	public void LoadScene(int level)
@@ -25,6 +25,8 @@ public class LoadOnClick : MonoBehaviour {
         PlayerPrefs.GetInt("GreenBalls", 0);
         PlayerPrefs.GetInt("YellowBalls", 0);
         PlayerPrefs.GetInt("OrangeBalls", 0);
+        if(PlayerPrefs.GetInt("FirstTime", 0) == 0)
+            PlayerPrefs.SetInt("FirstTime", 1);
         SceneManager.LoadScene("GameScene");
     }
 }

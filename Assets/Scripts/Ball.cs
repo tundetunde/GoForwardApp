@@ -10,6 +10,9 @@ public class Ball : MonoBehaviour {
     GameObject _lastPlatform;
     Rigidbody rb;
 
+    public Text longInstruction;
+    public Text ShortInstruction;
+
     public GameObject _pickUp;
     public GameObject _redPickUp;
     public GameObject _bluePickUp;
@@ -38,7 +41,16 @@ public class Ball : MonoBehaviour {
         if (Input.GetMouseButtonDown(0))
         {
             if (isStarted == false)
+            {
                 startTimer = true;
+                if(PlayerPrefs.GetInt("FirstTime") == 1)
+                {
+                    longInstruction.gameObject.SetActive(false);
+                    ShortInstruction.gameObject.SetActive(false);
+                    PlayerPrefs.SetInt("FirstTime", 2);
+                }
+            }
+                
             isStarted = true;
             return;
         }
@@ -54,7 +66,12 @@ public class Ball : MonoBehaviour {
 
     void Awake()
     {
-		SwipeScript.speedUpVal = 0;
+        if (PlayerPrefs.GetInt("FirstTime") == 1)
+        {
+            longInstruction.gameObject.SetActive(true);
+            ShortInstruction.gameObject.SetActive(true);
+        }
+        SwipeScript.speedUpVal = 0;
 		speed = 4;
         doublePointText.gameObject.SetActive(false);
         timeText.gameObject.SetActive(false);

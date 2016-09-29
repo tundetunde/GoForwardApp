@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class SwipeScript : MonoBehaviour {
-
-	public static float speed = 3;
+    public static float speed = 3;
     Rigidbody rb;
     private float fingerStartTime = 0.0f;
     private Vector2 fingerStartPos = Vector2.zero;
